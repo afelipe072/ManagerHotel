@@ -61,7 +61,7 @@ public class Inicial extends JFrame{
         menu0.add(item0);menu0.add(item1);menu0.add(item2);
         menu1.add(item3);menu1.add(item4);menu1.add(item5);
         menu2.add(item6);menu2.add(item7);menu2.add(item7);
-        menu3.add(item9);
+        menu3.add(item8);menu3.add(item9);
         
         barraMenu.add(menu0);barraMenu.add(menu1);barraMenu.add(menu2);barraMenu.add(menu3);
         
@@ -101,6 +101,27 @@ public class Inicial extends JFrame{
         item6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 VReserva v=new VReserva();
+                
+                
+
+                int x = (JDpanel.getWidth() / 2) - v.getWidth() /2;
+                int y = (JDpanel.getHeight() / 2) - v.getHeight() /2;
+                if (v.isShowing()){
+                v.setLocation(x,y);
+                }
+                else{
+                JDpanel.add(v);
+                v.setLocation(x,y);
+                v.setVisible(true);
+                }              
+                
+ 
+            }
+        });
+        
+         item8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                VFacturaciones v=new VFacturaciones();
                 
                 
 
