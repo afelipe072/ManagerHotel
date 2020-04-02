@@ -65,7 +65,6 @@ public class Configuracion extends javax.swing.JInternalFrame {
 
         jPasswordField1.setText("jPasswordField1");
 
-        jTextField1.setText("jTextField1");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);

@@ -19,8 +19,8 @@ import javafx.scene.layout.Border;
 public class Inicial extends JFrame{
     
     private JMenuBar barraMenu;
-    private JMenu menu0, menu1, menu2,menu3;
-    private JMenuItem item0, item1,item2,item3, item4,item5,item6,item7,item8,item9;
+    private JMenu menu0, menu1, menu2,menu3, menu4;
+    private JMenuItem item0, item1,item2,item3, item4,item5,item6,item7,item8,item9, item10, item11, item12;
     
     private JDesktopPane JDpanel;
     private Container contenedor; 
@@ -42,28 +42,33 @@ public class Inicial extends JFrame{
         barraMenu=new JMenuBar();
         setJMenuBar(barraMenu);
         
-        menu0=new JMenu("Menu 0");
-        menu1=new JMenu("Huespedes");
-        menu2=new JMenu("Menu 2");
-        menu3=new JMenu("Menu 3");
+        menu0=new JMenu("Hospedaje");
+        menu1=new JMenu("Reservas");
+        menu2=new JMenu("Facturacion");
+        menu3=new JMenu("configuraciones");
+        menu4=new JMenu("Servicios");
         
-        item0=new JMenuItem("Item 0");
-        item1=new JMenuItem("Item 1");
-        item2=new JMenuItem("Item 2");
-        item3=new JMenuItem("Item 3");
-        item4=new JMenuItem("Item 4");
-        item5=new JMenuItem("Gestionar Huspedes");
-        item6=new JMenuItem("Reservar");
-        item7=new JMenuItem("Item 7");
-        item8=new JMenuItem("Item 8");
+        item0=new JMenuItem("Huespedes");
+        item1=new JMenuItem("Habitaciones");
+        item2=new JMenuItem("checkin y Checkout");
+        item3=new JMenuItem("Reservaciones");
+        item4=new JMenuItem("Cancelar Reserva");
+        item5=new JMenuItem("Consultar Reservaciones");
+        item6=new JMenuItem("Facturar");
+        item7=new JMenuItem("consulta de Facturas");
+        item8=new JMenuItem("Gestion de usuarios");
         item9=new JMenuItem("Salir");
+        item10=new JMenuItem("Ayuda");
+        item11=new JMenuItem("Servicio Habitacion");
+        item12=new JMenuItem("Lavanderia");
         
         menu0.add(item0);menu0.add(item1);menu0.add(item2);
         menu1.add(item3);menu1.add(item4);menu1.add(item5);
-        menu2.add(item6);menu2.add(item7);menu2.add(item7);
-        menu3.add(item8);menu3.add(item9);
+        menu2.add(item6);menu2.add(item7);
+        menu3.add(item8);menu3.add(item9);menu3.add(item10);
+        menu4.add(item11);menu4.add(item12);
         
-        barraMenu.add(menu0);barraMenu.add(menu1);barraMenu.add(menu2);barraMenu.add(menu3);
+        barraMenu.add(menu0);barraMenu.add(menu1);barraMenu.add(menu2);barraMenu.add(menu4);barraMenu.add(menu3);
         
         JDpanel=new JDesktopPane();
         contenedor=getContentPane();
@@ -77,7 +82,7 @@ public class Inicial extends JFrame{
             }            
         });
         
-        item5.addActionListener(new java.awt.event.ActionListener() {
+        item0.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 VHuespedes v=new VHuespedes();
                 
@@ -98,7 +103,7 @@ public class Inicial extends JFrame{
             }
         });
         
-        item6.addActionListener(new java.awt.event.ActionListener() {
+        item3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 VReserva v=new VReserva();
                 
@@ -119,9 +124,29 @@ public class Inicial extends JFrame{
             }
         });
         
-         item8.addActionListener(new java.awt.event.ActionListener() {
+         item6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 VFacturaciones v=new VFacturaciones();
+                
+                
+
+                int x = (JDpanel.getWidth() / 2) - v.getWidth() /2;
+                int y = (JDpanel.getHeight() / 2) - v.getHeight() /2;
+                if (v.isShowing()){
+                v.setLocation(x,y);
+                }
+                else{
+                JDpanel.add(v);
+                v.setLocation(x,y);
+                v.setVisible(true);
+                }              
+                
+ 
+            }
+        });
+         item8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Configuracion v=new Configuracion();
                 
                 
 
