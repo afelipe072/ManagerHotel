@@ -24,7 +24,7 @@ public class Inicial extends JFrame{
     private JMenuItem item0, item1,item2,item3, item4,item5,item6,item7,item8,item9, item10, item11, item12;
     
     private JDesktopPane JDpanel;
-    private Container contenedor; 
+    private Container contenedor;    
     private JLabel usuarioActivo;
     
     private Usuario unUsuario;
@@ -74,8 +74,9 @@ public class Inicial extends JFrame{
         menu3.add(item8);menu3.add(item9);menu3.add(item10);
         menu4.add(item11);menu4.add(item12);
         
+        
         usuarioActivo=new JLabel("Usuario Activo: "+ unUsuario.getNombre() + " "+ unUsuario.getApellido()+"    ");
-        usuarioActivo.setForeground(Color.red);
+        usuarioActivo.setForeground(Color.GRAY);
         
         
         barraMenu.add(menu0);barraMenu.add(menu1);barraMenu.add(menu2);barraMenu.add(menu4);barraMenu.add(menu3);

@@ -12,22 +12,18 @@ package modelo;
 public class Usuario {
     private String codigo;
     private String id;
-<<<<<<< HEAD
-    private String nombre;
-=======
-    private  String nombre;
->>>>>>> 9bc214546d8857a2601f420d40b681d25117230c
+    private String nombre; 
     private String apellido;
     private String rol;
     private String telefono;
     private String user_name;
     private String contraseña;
 
-<<<<<<< HEAD
-=======
+
+
     public Usuario (){}
 
->>>>>>> 9bc214546d8857a2601f420d40b681d25117230c
+
     public Usuario(String codigo, String id, String nombre, String apellido, String rol, String telefono, String user_name, String contraseña) {
         this.codigo = codigo;
         this.id = id;
@@ -38,13 +34,7 @@ public class Usuario {
         this.user_name = user_name;
         this.contraseña = contraseña;
     }
-<<<<<<< HEAD
     
-    public Usuario(){}
-
-=======
-        
->>>>>>> 9bc214546d8857a2601f420d40b681d25117230c
     public String getCodigo() {
         return codigo;
     }

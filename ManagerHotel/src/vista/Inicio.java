@@ -149,38 +149,30 @@ public class Inicio extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         ArrayList <Usuario> usuarios=new ArrayList();
-        usuarios=ControladorUsuario.listadoUsuario("0");        
+        usuarios=ControladorUsuario.listadoUsuario("0");      
         
-<<<<<<< HEAD
-        String nombre;
-        String contraseña="";
-=======
+
         String nombre,contraseña;
-        
->>>>>>> 9bc214546d8857a2601f420d40b681d25117230c
         
         if(txtUsername.getText().isEmpty() || JPContraseña.getText().isEmpty()){
             JOptionPane.showMessageDialog(this,"Por Favor Llene Todos Los Campos","Error",JOptionPane.ERROR_MESSAGE);
         }else{
         
         
-<<<<<<< HEAD
+
         nombre=txtUsername.getText();
         contraseña=JPContraseña.getText();
-=======
+
         nombre=txtUsername.getText();              
         contraseña=JPContraseña.getText();  
         
->>>>>>> 9bc214546d8857a2601f420d40b681d25117230c
         
         for(int i=0;i<usuarios.size();i++){   
            
             if(usuarios.get(i).getUser_name().equals(nombre) && usuarios.get(i).getContraseña().equals(contraseña)){
-<<<<<<< HEAD
-                Inicial ventanaInicial = new Inicial();
-=======
+           
                 Inicial ventanaInicial = new Inicial(usuarios.get(i));
->>>>>>> 9bc214546d8857a2601f420d40b681d25117230c
+
                 ventanaInicial.setVisible(true);
                 dispose();
                 
