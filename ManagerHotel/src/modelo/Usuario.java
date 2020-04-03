@@ -10,16 +10,16 @@ package modelo;
  * @author user
  */
 public class Usuario {
-    private int codigo;
-    private int id;
-    private  String nombre;
+    private String codigo;
+    private String id;
+    private String nombre;
     private String apellido;
     private String rol;
-    private int telefono;
+    private String telefono;
     private String user_name;
-    private int contraseña;
+    private String contraseña;
 
-    public Usuario(int codigo, int id, String nombre, String apellido, String rol, int telefono, String user_name, int contraseña) {
+    public Usuario(String codigo, String id, String nombre, String apellido, String rol, String telefono, String user_name, String contraseña) {
         this.codigo = codigo;
         this.id = id;
         this.nombre = nombre;
@@ -32,19 +32,19 @@ public class Usuario {
     
     public Usuario(){}
 
-    public int getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -72,11 +72,11 @@ public class Usuario {
         this.rol = rol;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
@@ -88,11 +88,11 @@ public class Usuario {
         this.user_name = user_name;
     }
 
-    public int getContraseña() {
+    public String getContraseña() {
         return contraseña;
     }
 
-    public void setContraseña(int contraseña) {
+    public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
     

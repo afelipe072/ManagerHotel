@@ -92,15 +92,13 @@ public class Inicio extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jButton1))
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3))
+                                .addGap(59, 59, 59)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(59, 59, 59)
-                                        .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addGap(115, 115, 115)
-                                        .addComponent(JPContraseña)))
+                                    .addComponent(JPContraseña)
+                                    .addComponent(txtUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -154,7 +152,7 @@ public class Inicio extends javax.swing.JFrame {
         usuarios=ControladorUsuario.listadoUsuario("0");        
         
         String nombre;
-        int contraseña=0;
+        String contraseña="";
         
         if(txtUsername.getText().isEmpty() || JPContraseña.getText().isEmpty()){
             JOptionPane.showMessageDialog(this,"Por Favor Llene Todos Los Campos","Error",JOptionPane.ERROR_MESSAGE);
@@ -162,17 +160,11 @@ public class Inicio extends javax.swing.JFrame {
         
         
         nombre=txtUsername.getText();
-        
-        try{
-        contraseña=Integer.parseInt(JPContraseña.getText());  
-        
-        }catch(NumberFormatException exc){
-        
-        }
+        contraseña=JPContraseña.getText();
         
         for(int i=0;i<usuarios.size();i++){   
            
-            if(usuarios.get(i).getUser_name().equals(nombre) && usuarios.get(i).getContraseña()== contraseña){
+            if(usuarios.get(i).getUser_name().equals(nombre) && usuarios.get(i).getContraseña().equals(contraseña)){
                 Inicial ventanaInicial = new Inicial();
                 ventanaInicial.setVisible(true);
                 dispose();
