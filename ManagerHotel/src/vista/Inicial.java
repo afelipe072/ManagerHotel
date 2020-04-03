@@ -41,10 +41,8 @@ public class Inicial extends JFrame{
         setExtendedState(6); 
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setIconImage(new ImageIcon(getClass().getResource("/imagenes/hotel.png")).getImage());
-        
-        
-        
+        setIconImage(new ImageIcon(getClass().getResource("/imagenes/hotel.png")).getImage());       
+                
         barraMenu=new JMenuBar();
         setJMenuBar(barraMenu);
         
@@ -81,15 +79,15 @@ public class Inicial extends JFrame{
         
         barraMenu.add(menu0);barraMenu.add(menu1);barraMenu.add(menu2);barraMenu.add(menu4);barraMenu.add(menu3);
         barraMenu.add(Box.createHorizontalGlue());
-        barraMenu.add(usuarioActivo);
-       
-        
+        barraMenu.add(usuarioActivo);      
         
         JDpanel=new JDesktopPane();
         
         contenedor=getContentPane();
         contenedor.add(JDpanel);
         JDpanel.setBorder(new ImagenFondo());
+        
+        validarPermisos();
         
         
         item9.addActionListener(new java.awt.event.ActionListener() {            
@@ -185,6 +183,15 @@ public class Inicial extends JFrame{
         
         
     }
+    
+    public void validarPermisos(){
+        if(unUsuario.getRol().equalsIgnoreCase("operativo")){
+            item1.setEnabled(false);
+            item8.setEnabled(false);
+        }
+    }
+    
+    
     
     
     

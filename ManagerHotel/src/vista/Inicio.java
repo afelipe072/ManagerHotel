@@ -153,36 +153,33 @@ public class Inicio extends javax.swing.JFrame {
         
 
         String nombre,contraseña;
+        int validar=0; // variable para comprobar ingreso al sistema
         
         if(txtUsername.getText().isEmpty() || JPContraseña.getText().isEmpty()){
             JOptionPane.showMessageDialog(this,"Por Favor Llene Todos Los Campos","Error",JOptionPane.ERROR_MESSAGE);
         }else{
-        
-        
-
+                
         nombre=txtUsername.getText();
-        contraseña=JPContraseña.getText();
-
-        nombre=txtUsername.getText();              
-        contraseña=JPContraseña.getText();  
+        contraseña=JPContraseña.getText();        
         
         
         for(int i=0;i<usuarios.size();i++){   
            
             if(usuarios.get(i).getUser_name().equals(nombre) && usuarios.get(i).getContraseña().equals(contraseña)){
-           
+                validar=1; // si hay un usuario registrado y sus datos son correctos entra al sistema y validar=1
                 Inicial ventanaInicial = new Inicial(usuarios.get(i));
-
                 ventanaInicial.setVisible(true);
                 dispose();
-                
-            }else {
-            JOptionPane.showMessageDialog(this,"Nombre De Usuario o Contraseña Erroneos","Error",JOptionPane.ERROR_MESSAGE);
-            txtUsername.setText("");
-            JPContraseña.setText("");
-            }
+                  
+            }            
+            
         }
         
+        if(validar==0){ // si no se ingrso al sistema validar=0, datos erroneos o no registrado.
+         JOptionPane.showMessageDialog(this,"Nombre De Usuario o Contraseña Erroneos","Error",JOptionPane.ERROR_MESSAGE);
+         txtUsername.setText("");
+         JPContraseña.setText("");
+        }
         
         
         }
