@@ -44,14 +44,14 @@ public class UsuarioDAO {
                         
             while(rs.next()){
                 Usuario usuario = new Usuario();
-                usuario.setCodigo(rs.getInt("codigo"));
-                usuario.setId(rs.getInt("id"));               
+                usuario.setCodigo(rs.getString("codigo"));
+                usuario.setId(rs.getString("id"));               
                 usuario.setNombre(rs.getString("nombre"));
                 usuario.setApellido(rs.getString("apellido"));
                 usuario.setRol(rs.getString("rol"));
-                usuario.setTelefono(rs.getInt("telefono"));
+                usuario.setTelefono(rs.getString("telefono"));
                 usuario.setUser_name(rs.getString("user_name"));
-                usuario.setContraseña(rs.getInt("contraseña"));         
+                usuario.setContraseña(rs.getString("contraseña"));         
                 
                                
                 

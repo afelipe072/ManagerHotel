@@ -153,27 +153,22 @@ public class Inicio extends javax.swing.JFrame {
         ArrayList <Usuario> usuarios=new ArrayList();
         usuarios=ControladorUsuario.listadoUsuario("0");        
         
-        String nombre;
-        int contraseña=0;
+        String nombre,contraseña;
+        
         
         if(txtUsername.getText().isEmpty() || JPContraseña.getText().isEmpty()){
             JOptionPane.showMessageDialog(this,"Por Favor Llene Todos Los Campos","Error",JOptionPane.ERROR_MESSAGE);
         }else{
         
         
-        nombre=txtUsername.getText();
+        nombre=txtUsername.getText();              
+        contraseña=JPContraseña.getText();  
         
-        try{
-        contraseña=Integer.parseInt(JPContraseña.getText());  
-        
-        }catch(NumberFormatException exc){
-        
-        }
         
         for(int i=0;i<usuarios.size();i++){   
            
-            if(usuarios.get(i).getUser_name().equals(nombre) && usuarios.get(i).getContraseña()== contraseña){
-                Inicial ventanaInicial = new Inicial();
+            if(usuarios.get(i).getUser_name().equals(nombre) && usuarios.get(i).getContraseña().equals(contraseña)){
+                Inicial ventanaInicial = new Inicial(usuarios.get(i));
                 ventanaInicial.setVisible(true);
                 dispose();
                 

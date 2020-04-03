@@ -11,6 +11,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javafx.scene.layout.Border;
+import modelo.Usuario;
 
 /**
  *
@@ -24,8 +25,12 @@ public class Inicial extends JFrame{
     
     private JDesktopPane JDpanel;
     private Container contenedor; 
+    private JLabel usuarioActivo;
     
-    public Inicial(){
+    private Usuario unUsuario;
+    
+    public Inicial(Usuario u){
+        unUsuario=u;
         iniciarComponentes();
     }
     
@@ -37,6 +42,7 @@ public class Inicial extends JFrame{
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setIconImage(new ImageIcon(getClass().getResource("/imagenes/hotel.png")).getImage());
+        
         
         
         barraMenu=new JMenuBar();
@@ -68,9 +74,16 @@ public class Inicial extends JFrame{
         menu3.add(item8);menu3.add(item9);menu3.add(item10);
         menu4.add(item11);menu4.add(item12);
         
+        usuarioActivo=new JLabel("Usuario Activo: "+ unUsuario.getNombre() + " "+ unUsuario.getApellido()+"    ");
+        
         barraMenu.add(menu0);barraMenu.add(menu1);barraMenu.add(menu2);barraMenu.add(menu4);barraMenu.add(menu3);
+        barraMenu.add(Box.createHorizontalGlue());
+        barraMenu.add(usuarioActivo);
+       
+        
         
         JDpanel=new JDesktopPane();
+        
         contenedor=getContentPane();
         contenedor.add(JDpanel);
         JDpanel.setBorder(new ImagenFondo());
