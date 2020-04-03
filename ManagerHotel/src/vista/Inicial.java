@@ -75,6 +75,8 @@ public class Inicial extends JFrame{
         menu4.add(item11);menu4.add(item12);
         
         usuarioActivo=new JLabel("Usuario Activo: "+ unUsuario.getNombre() + " "+ unUsuario.getApellido()+"    ");
+        usuarioActivo.setForeground(Color.red);
+        
         
         barraMenu.add(menu0);barraMenu.add(menu1);barraMenu.add(menu2);barraMenu.add(menu4);barraMenu.add(menu3);
         barraMenu.add(Box.createHorizontalGlue());
