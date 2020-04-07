@@ -21,7 +21,7 @@ public class Inicial extends JFrame{
     
     private JMenuBar barraMenu;
     private JMenu menu0, menu1, menu2,menu3, menu4;
-    private JMenuItem item0, item1,item2,item3, item4,item5,item6,item7,item8,item9, item10, item11, item12;
+    private JMenuItem item0, item1,item2,item3, item4,item5,item6,item7,item8,item9, item10, item11, item12,item13;
     
     private JDesktopPane JDpanel;
     private Container contenedor;    
@@ -65,11 +65,12 @@ public class Inicial extends JFrame{
         item10=new JMenuItem("Ayuda");
         item11=new JMenuItem("Servicio Habitacion");
         item12=new JMenuItem("Lavanderia");
+        item13=new JMenuItem("Cambiar Contraseña");
         
         menu0.add(item0);menu0.add(item1);menu0.add(item2);
         menu1.add(item3);menu1.add(item4);menu1.add(item5);
         menu2.add(item6);menu2.add(item7);
-        menu3.add(item8);menu3.add(item9);menu3.add(item10);
+        menu3.add(item8);menu3.add(item13);menu3.add(item9);menu3.add(item10);
         menu4.add(item11);menu4.add(item12);
         
         
@@ -158,31 +159,38 @@ public class Inicial extends JFrame{
  
             }
         });
+         
          item8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Configuracion v=new Configuracion();
+                centrar(v);
                 
-                
-
-                int x = (JDpanel.getWidth() / 2) - v.getWidth() /2;
-                int y = (JDpanel.getHeight() / 2) - v.getHeight() /2;
-                if (v.isShowing()){
-                v.setLocation(x,y);
-                }
-                else{
-                JDpanel.add(v);
-                v.setLocation(x,y);
-                v.setVisible(true);
-                }              
-                
- 
             }
         });
-        
-        
-        
+         
+         item13.addActionListener(new java.awt.event.ActionListener() {            
+            public void actionPerformed(ActionEvent e) {
+                VCambiarContraseña v= new VCambiarContraseña(unUsuario);
+                centrar(v);
+            }
+        });
+          
         
     }
+    
+    public void centrar (JInternalFrame v){
+        int x = (JDpanel.getWidth() / 2) - v.getWidth() /2;
+        int y = (JDpanel.getHeight() / 2) - v.getHeight() /2;
+        if (v.isShowing()){
+        v.setLocation(x,y);
+        }
+        else{
+        JDpanel.add(v);
+        v.setLocation(x,y);
+        v.setVisible(true);
+        }            
+    }
+    
     
     public void validarPermisos(){
         if(unUsuario.getRol().equalsIgnoreCase("operativo")){

@@ -22,5 +22,12 @@ public class ControladorUsuario {
         listado = usuariodao.listadoUsuario(codigo);
         return listado; 
     }
+    
+    public static int modificarContraseña(Usuario u )
+    {
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        int resultado = usuarioDAO.modificarContraseña(u);
+        return resultado; 
+    }
        
 }

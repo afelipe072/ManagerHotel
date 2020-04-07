@@ -52,11 +52,8 @@ public class UsuarioDAO {
                 usuario.setTelefono(rs.getString("telefono"));
                 usuario.setUser_name(rs.getString("user_name"));
                 usuario.setContraseña(rs.getString("contraseña"));         
-                
-                               
-                
+                      
                 listado.add(usuario);
-                
             }
             
         }
@@ -76,6 +73,43 @@ public class UsuarioDAO {
         }
         return listado;
     } 
+    
+    public int modificarContraseña(Usuario u){      
+        Connection con = null;
+        PreparedStatement pstm;
+        pstm = null;
+        int rtdo;
+        rtdo = 0;
+        try{
+            con = Fachada.getConnection();
+            String sql = "UPDATE usuario " +
+                         "SET contraseña = ?"
+                    +    "WHERE codigo=?";
+            pstm = con.prepareStatement(sql);            
+            pstm.setString(1, u.getContraseña());
+                       
+            pstm.setString(2,u.getCodigo());
+            
+            rtdo = pstm.executeUpdate();  
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Código : " + 
+                        ex.getErrorCode() + "\nError :" + ex.getMessage());
+        }
+        finally{
+            try{
+                if(pstm!=null) pstm.close();                
+            }
+            catch(SQLException ex){
+                JOptionPane.showMessageDialog(null,"Código : " + 
+                        ex.getErrorCode() + "\nError :" + ex.getMessage());
+            }
+        }
+        return rtdo;
+    }
+    
+    
+    
     
     
 }
