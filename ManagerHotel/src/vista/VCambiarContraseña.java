@@ -63,7 +63,7 @@ public class VCambiarContraseña extends javax.swing.JInternalFrame {
         jlCodigo.setText("Codigo:");
 
         jtextCodigo.setEnabled(false);
-        jtextCodigo.setText(unUsuario.getCodigo());
+        jtextCodigo.setText(unUsuario.getCodigo()+"");
 
         jlID.setText("ID:");
 

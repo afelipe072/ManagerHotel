@@ -123,7 +123,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jtextCodigo">
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jtextCodigo.setEnabled(false);&#xa;jtextCodigo.setText(unUsuario.getCodigo());"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jtextCodigo.setEnabled(false);&#xa;jtextCodigo.setText(unUsuario.getCodigo()+&quot;&quot;);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jlID">

@@ -44,7 +44,7 @@ public class UsuarioDAO {
                         
             while(rs.next()){
                 Usuario usuario = new Usuario();
-                usuario.setCodigo(rs.getString("codigo"));
+                usuario.setCodigo(rs.getInt("codigo"));
                 usuario.setId(rs.getString("id"));               
                 usuario.setNombre(rs.getString("nombre"));
                 usuario.setApellido(rs.getString("apellido"));
@@ -88,7 +88,7 @@ public class UsuarioDAO {
             pstm = con.prepareStatement(sql);            
             pstm.setString(1, u.getContraseña());
                        
-            pstm.setString(2,u.getCodigo());
+            pstm.setInt(2,u.getCodigo());
             
             rtdo = pstm.executeUpdate();  
         }
@@ -121,7 +121,7 @@ public class UsuarioDAO {
                     +    "VALUES (?,?,?,?,?,?,?,?)";
             pstm = con.prepareStatement(sql);
             
-            pstm.setString(1,u.getCodigo());
+            pstm.setInt(1,u.getCodigo());
             pstm.setString(2,u.getId());
             pstm.setString(3,u.getNombre());
             pstm.setString(4,u.getApellido());
@@ -161,7 +161,7 @@ public class UsuarioDAO {
                     +    "WHERE codigo=?";
             
             pstm = con.prepareStatement(sql);            
-            pstm.setString(1,u.getCodigo());
+            pstm.setInt(1,u.getCodigo());
             pstm.setString(2,u.getId());
             pstm.setString(3,u.getNombre());
             pstm.setString(4,u.getApellido());
@@ -170,7 +170,7 @@ public class UsuarioDAO {
             pstm.setString(7,u.getUser_name());
             pstm.setString(8,u.getContraseña());
            
-            pstm.setString(9,u.getCodigo());
+            pstm.setInt(9,u.getCodigo());
             
             rtdo = pstm.executeUpdate();  
         }
@@ -200,7 +200,7 @@ public class UsuarioDAO {
             String sql = "DELETE FROM usuario WHERE codigo = ? ";
             
             pstm = con.prepareStatement(sql);
-            pstm.setString(1,codigo);
+            pstm.setInt(1,Integer.parseInt(codigo));
             
             rtdo = pstm.executeUpdate(); 
             return rtdo;

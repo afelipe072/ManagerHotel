@@ -10,7 +10,7 @@ package modelo;
  * @author user
  */
 public class Usuario {
-    private String codigo;
+    private int codigo;
     private String id;
     private String nombre; 
     private String apellido;
@@ -24,7 +24,7 @@ public class Usuario {
     public Usuario (){}
 
 
-    public Usuario(String codigo, String id, String nombre, String apellido, String rol, String telefono, String user_name, String contraseña) {
+    public Usuario(int codigo, String id, String nombre, String apellido, String rol, String telefono, String user_name, String contraseña) {
         this.codigo = codigo;
         this.id = id;
         this.nombre = nombre;
@@ -35,11 +35,11 @@ public class Usuario {
         this.contraseña = contraseña;
     }
     
-    public String getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 

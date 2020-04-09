@@ -324,14 +324,7 @@ public class GestionarUsuarios extends javax.swing.JInternalFrame {
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
         // TODO add your handling code here:
         
-        jtxtCodigo.setText("");
-        jtxtID.setText("");
-        jtxtNombre.setText(""); 
-        jtxtApellido.setText("");
-        jcbRol.setSelectedIndex(0);
-        jtxtTelefono.setText("");
-        jtxtUser.setText("");
-        jpContraseña.setText("");  
+        limpiarCampos();  
         
         if(jbNuevo.getText().equals("Nuevo")){
             
@@ -388,7 +381,7 @@ public class GestionarUsuarios extends javax.swing.JInternalFrame {
                 jcbRol.requestFocusInWindow(); }               
             else {
                 Usuario unUsuario=new Usuario();
-                unUsuario.setCodigo(jtxtCodigo.getText());
+                unUsuario.setCodigo(Integer.parseInt(jtxtCodigo.getText()));
                 unUsuario.setId(jtxtID.getText());
                 unUsuario.setNombre(jtxtNombre.getText());
                 unUsuario.setApellido(jtxtApellido.getText());
@@ -431,6 +424,7 @@ public class GestionarUsuarios extends javax.swing.JInternalFrame {
                     jTable1.setEnabled(true);
                     jTable1.setVisible(true);
                     jbNuevo.requestFocusInWindow();
+                    limpiarCampos();
                     
             }else{
                    JOptionPane.showMessageDialog(this,
@@ -492,7 +486,7 @@ public class GestionarUsuarios extends javax.swing.JInternalFrame {
              
             //Se configura los datos en el objeto unUsuario de la clase
             //Usuario
-            unUsuario.setCodigo(jtxtCodigo.getText());
+            unUsuario.setCodigo(Integer.parseInt(jtxtCodigo.getText()));
             unUsuario.setId(jtxtID.getText());
             unUsuario.setNombre(jtxtNombre.getText());
             unUsuario.setApellido(jtxtApellido.getText());
@@ -505,6 +499,7 @@ public class GestionarUsuarios extends javax.swing.JInternalFrame {
              if(ControladorUsuario.modificarUsuario(unUsuario) == 1){
                  JOptionPane.showMessageDialog(this,"Actualización exitosa");
                  this.cargarUsuarios();
+                 this.limpiarCampos(); 
              } else {
                  JOptionPane.showMessageDialog(this,"Actualización Fallida");
              }
@@ -533,14 +528,7 @@ public class GestionarUsuarios extends javax.swing.JInternalFrame {
                             "Confirmación de acción", 
                             JOptionPane.INFORMATION_MESSAGE);                    
                     cargarUsuarios();
-                    jtxtCodigo.setText("");
-                    jtxtID.setText("");
-                    jtxtNombre.setText(""); 
-                    jtxtApellido.setText("");
-                    jcbRol.setSelectedIndex(0);
-                    jtxtTelefono.setText("");
-                    jtxtUser.setText("");
-                    jpContraseña.setText("");  
+                    limpiarCampos();  
                 }
                 else{
                     JOptionPane.showMessageDialog(this, 
@@ -578,6 +566,18 @@ public class GestionarUsuarios extends javax.swing.JInternalFrame {
             modelo.removeRow(i);
         }
     }
+    
+    private void limpiarCampos(){
+        jtxtCodigo.setText("");
+        jtxtID.setText("");
+        jtxtNombre.setText(""); 
+        jtxtApellido.setText("");
+        jcbRol.setSelectedIndex(0);
+        jtxtTelefono.setText("");
+        jtxtUser.setText("");
+        jpContraseña.setText("");  
+    }
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
