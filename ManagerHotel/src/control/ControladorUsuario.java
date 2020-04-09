@@ -29,5 +29,28 @@ public class ControladorUsuario {
         int resultado = usuarioDAO.modificarContraseña(u);
         return resultado; 
     }
+    
+    public static int grabarUsuario(Usuario u)
+    {
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        int resultado = usuarioDAO.grabarUsuario(u);
+        return resultado; 
+    }
+    
+     public static int modificarUsuario(Usuario u )
+    {
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        int resultado = usuarioDAO.modificarUsuario(u);
+        return resultado; 
+    }
+     
+     public static int borrarUsuario(String codigo)
+    {
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        int resultado = usuarioDAO.borrarUsuario(codigo);
+        return resultado; 
+    }
+     
+     
        
 }

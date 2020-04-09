@@ -100,69 +100,27 @@ public class Inicial extends JFrame{
         item0.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 VHuespedes v=new VHuespedes();
-                
-                
-
-                int x = (JDpanel.getWidth() / 2) - v.getWidth() /2;
-                int y = (JDpanel.getHeight() / 2) - v.getHeight() /2;
-                if (v.isShowing()){
-                v.setLocation(x,y);
-                }
-                else{
-                JDpanel.add(v);
-                v.setLocation(x,y);
-                v.setVisible(true);
-                }              
-                
- 
+                centrar(v);
             }
         });
         
         item3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 VReserva v=new VReserva();
-                
-                
-
-                int x = (JDpanel.getWidth() / 2) - v.getWidth() /2;
-                int y = (JDpanel.getHeight() / 2) - v.getHeight() /2;
-                if (v.isShowing()){
-                v.setLocation(x,y);
-                }
-                else{
-                JDpanel.add(v);
-                v.setLocation(x,y);
-                v.setVisible(true);
-                }              
-                
- 
+                centrar(v);
             }
         });
         
          item6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 VFacturaciones v=new VFacturaciones();
-                
-                
-
-                int x = (JDpanel.getWidth() / 2) - v.getWidth() /2;
-                int y = (JDpanel.getHeight() / 2) - v.getHeight() /2;
-                if (v.isShowing()){
-                v.setLocation(x,y);
-                }
-                else{
-                JDpanel.add(v);
-                v.setLocation(x,y);
-                v.setVisible(true);
-                }              
-                
- 
+                centrar(v);
             }
         });
          
          item8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Configuracion v=new Configuracion();
+                GestionarUsuarios v = new GestionarUsuarios();
                 centrar(v);
                 
             }

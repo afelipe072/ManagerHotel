@@ -25,7 +25,7 @@ import servicio.Fachada;
  */
 public class UsuarioDAO {
     
-    public ArrayList<Usuario> listadoUsuario(String codigo){      
+    public ArrayList<Usuario> listadoUsuario(String c){      
         Connection con = null;
         PreparedStatement pstm = null;
         ResultSet rs = null;
@@ -33,10 +33,10 @@ public class UsuarioDAO {
         try{
             con = Fachada.getConnection();
             String sql="";
-            if(codigo.equalsIgnoreCase("0")){
+            if(c.equalsIgnoreCase("0")){
                 sql = "SELECT * FROM usuario  ORDER BY codigo";            
             }else{
-                sql = "SELECT * FROM usuario WHERE codigo="+codigo;     
+                sql = "SELECT * FROM usuario WHERE codigo="+c;     
             }                        
             pstm = con.prepareStatement(sql);
             
@@ -96,6 +96,119 @@ public class UsuarioDAO {
             JOptionPane.showMessageDialog(null,"Código : " + 
                         ex.getErrorCode() + "\nError :" + ex.getMessage());
         }
+        finally{
+            try{
+                if(pstm!=null) pstm.close();                
+            }
+            catch(SQLException ex){
+                JOptionPane.showMessageDialog(null,"Código : " + 
+                        ex.getErrorCode() + "\nError :" + ex.getMessage());
+            }
+        }
+        return rtdo;
+    }
+    
+    public int grabarUsuario(Usuario u ){
+        Connection con = null;
+        PreparedStatement pstm;
+        pstm = null;
+        int rtdo;
+        rtdo = 0;
+        
+         try{
+            con = Fachada.getConnection();
+            String sql = "INSERT INTO usuario (codigo, id, nombre, apellido, rol, telefono, user_name, contraseña)"
+                    +    "VALUES (?,?,?,?,?,?,?,?)";
+            pstm = con.prepareStatement(sql);
+            
+            pstm.setString(1,u.getCodigo());
+            pstm.setString(2,u.getId());
+            pstm.setString(3,u.getNombre());
+            pstm.setString(4,u.getApellido());
+            pstm.setString(5,u.getRol());
+            pstm.setString(6,u.getTelefono());
+            pstm.setString(7,u.getUser_name());
+            pstm.setString(8,u.getContraseña());
+          
+            rtdo = pstm.executeUpdate();  
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Código : " + 
+                        ex.getErrorCode() + "\nError :" + ex.getMessage());
+        }
+        finally{
+            try{
+                if(pstm!=null) pstm.close();                
+            }
+            catch(SQLException ex){
+                
+            }
+        }
+        return rtdo;
+    }
+    
+    public int modificarUsuario(Usuario u){      
+        Connection con = null;
+        PreparedStatement pstm;
+        pstm = null;
+        int rtdo;
+        rtdo = 0;
+        try{
+            con = Fachada.getConnection();
+            String sql = "UPDATE usuario " +
+                         "SET codigo = ?,id = ?,nombre = ?,"
+                         + "apellido=?,rol=?,telefono=?, user_name=?,contraseña=? "
+                    +    "WHERE codigo=?";
+            
+            pstm = con.prepareStatement(sql);            
+            pstm.setString(1,u.getCodigo());
+            pstm.setString(2,u.getId());
+            pstm.setString(3,u.getNombre());
+            pstm.setString(4,u.getApellido());
+            pstm.setString(5,u.getRol());
+            pstm.setString(6,u.getTelefono());
+            pstm.setString(7,u.getUser_name());
+            pstm.setString(8,u.getContraseña());
+           
+            pstm.setString(9,u.getCodigo());
+            
+            rtdo = pstm.executeUpdate();  
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Código : " + 
+                        ex.getErrorCode() + "\nError :" + ex.getMessage());
+        }
+        finally{
+            try{
+                if(pstm!=null) pstm.close();                
+            }
+            catch(SQLException ex){
+                JOptionPane.showMessageDialog(null,"Código : " + 
+                        ex.getErrorCode() + "\nError :" + ex.getMessage());
+            }
+        }
+        return rtdo;
+    }
+    
+    public int borrarUsuario(String codigo){      
+        Connection con = null;
+        PreparedStatement pstm = null;
+        int rtdo;
+        rtdo = 0;
+        try{
+            con = Fachada.getConnection();
+            String sql = "DELETE FROM usuario WHERE codigo = ? ";
+            
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1,codigo);
+            
+            rtdo = pstm.executeUpdate(); 
+            return rtdo;
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Código : " + 
+                        ex.getErrorCode() + "\nError :" + ex.getMessage());
+        } 
         finally{
             try{
                 if(pstm!=null) pstm.close();                
