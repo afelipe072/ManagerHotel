@@ -5,6 +5,9 @@
     <Property name="closable" type="boolean" value="true"/>
     <Property name="maximizable" type="boolean" value="true"/>
     <Property name="title" type="java.lang.String" value="Gestionar Usuarios"/>
+    <Property name="frameIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+      <Image iconType="3" name="/imagenes/clientes.jpg"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -250,12 +253,10 @@
                   <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jbCancelar" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jbNuevo" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jbRegistrar" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jbBorrar" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jbModificar" alignment="0" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="jbNuevo" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jbRegistrar" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jbBorrar" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jbModificar" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="54" max="32767" attributes="0"/>
               </Group>
