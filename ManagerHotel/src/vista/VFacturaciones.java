@@ -62,7 +62,6 @@ public class VFacturaciones extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/clientes.jpg"))); // NOI18N
 
         jList2.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -93,6 +92,8 @@ public class VFacturaciones extends javax.swing.JInternalFrame {
         });
 
         jButton2.setText("Atras");
+
+        jPanel4.setBackground(new java.awt.Color(204, 204, 255));
 
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

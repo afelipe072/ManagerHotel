@@ -29,6 +29,8 @@ public class Inicial extends JFrame{
     
     private Usuario unUsuario;
     
+  
+    
     public Inicial(Usuario u){
         unUsuario=u;
         iniciarComponentes();
@@ -56,7 +58,6 @@ public class Inicial extends JFrame{
         item1=new JMenuItem("Habitaciones");
         item2=new JMenuItem("checkin y Checkout");
         item3=new JMenuItem("Reservaciones");
-        item4=new JMenuItem("Cancelar Reserva");
         item5=new JMenuItem("Consultar Reservaciones");
         item6=new JMenuItem("Facturar");
         item7=new JMenuItem("consulta de Facturas");
@@ -68,7 +69,7 @@ public class Inicial extends JFrame{
         item13=new JMenuItem("Cambiar Contraseña");
         
         menu0.add(item0);menu0.add(item1);menu0.add(item2);
-        menu1.add(item3);menu1.add(item4);menu1.add(item5);
+        menu1.add(item3);menu1.add(item5);
         menu2.add(item6);menu2.add(item7);
         menu3.add(item8);menu3.add(item13);menu3.add(item9);menu3.add(item10);
         menu4.add(item11);menu4.add(item12);
@@ -99,15 +100,23 @@ public class Inicial extends JFrame{
         
         item0.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                VHuespedes v=new VHuespedes();
+                VHuespedes v=new VHuespedes(unUsuario);
                 centrar(v);
             }
         });
         
         item3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                VReserva v=new VReserva();
+                VHuespedes vHuesped=new VHuespedes(unUsuario);
+                VReserva v=new VReserva(unUsuario,vHuesped,JDpanel);
                 centrar(v);
+            }
+        });
+        
+        item5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                VConsultarReservas vConsultarReservas=new VConsultarReservas();
+                centrar(vConsultarReservas);
             }
         });
         
@@ -136,6 +145,8 @@ public class Inicial extends JFrame{
         
     }
     
+    
+    
     public void centrar (JInternalFrame v){
         int x = (JDpanel.getWidth() / 2) - v.getWidth() /2;
         int y = (JDpanel.getHeight() / 2) - v.getHeight() /2;
@@ -162,3 +173,5 @@ public class Inicial extends JFrame{
     
     
 }
+
+ 
