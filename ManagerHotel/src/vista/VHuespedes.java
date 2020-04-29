@@ -25,7 +25,7 @@ public class VHuespedes extends javax.swing.JInternalFrame {
     /**
      * Creates new form VHuespedes
      */
-    public VHuespedes(Usuario u) {
+    public VHuespedes(Usuario u){
         unUsuario = u;
         initComponents();
     }

@@ -106,7 +106,7 @@ public class Inicial extends JFrame{
         });
         
         item3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e){
                 VHuespedes vHuesped=new VHuespedes(unUsuario);
                 VReserva v=new VReserva(unUsuario,vHuesped,JDpanel);
                 centrar(v);

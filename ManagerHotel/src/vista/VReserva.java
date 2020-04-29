@@ -303,12 +303,12 @@ public class VReserva extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jtxtId, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addComponent(jtxtId, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jtxtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -470,8 +470,7 @@ public class VReserva extends javax.swing.JInternalFrame {
     
     //crearReserva :  crea la reserva si toda la informacion esta completa
     public void crearReserva(){
-        if(camposVacios()){
-            
+        if(camposVacios()){            
             long fechaE = Long.parseLong(jtxtFechIngreso.getText());
             long fechaS = Long.parseLong(jtxtFechSalida.getText());
             java.sql.Date data = new java.sql.Date(fechaE);
@@ -516,7 +515,7 @@ public class VReserva extends javax.swing.JInternalFrame {
     private void jtxtIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtIdKeyTyped
         // codigo para no dejar escribir caracteres de tipo string en el campo txt
         char valor = evt.getKeyChar();
-        if (!Character.isDigit(valor)) {
+        if (!Character.isDigit(valor)){
             evt.consume();
         }
     }//GEN-LAST:event_jtxtIdKeyTyped
