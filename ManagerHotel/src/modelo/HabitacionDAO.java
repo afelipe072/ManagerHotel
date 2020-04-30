@@ -12,6 +12,7 @@ import servicio.Fachada;
 
 public class HabitacionDAO {
     
+    //funcion listadoHabitaciones : retorna el listado de habitaciones existentes 
     public ArrayList<Habitacion> listadoHabitaciones(){      
         Connection con = null;
         PreparedStatement pstm = null;
@@ -50,5 +51,112 @@ public class HabitacionDAO {
         }
         return listado;
     }
+    
+    
+    //funcion crearHabitacion : crea una habitacion y la guarda en la tabla habitacion
+    public int crearHabitacion(Habitacion habitacion){
+        Connection con = null;
+        PreparedStatement pstm;
+        pstm = null;
+        int rtdo;
+        rtdo = 0;
+        
+         try{
+            con = Fachada.getConnection();
+            String sql = "INSERT INTO habitacion (numero, valor, tipo_habitacion, descripcion_habitacion, estado)"
+                    +"VALUES (?,?,?,?,?)";
+            pstm = con.prepareStatement(sql);
+            
+            pstm.setInt(1,habitacion.getNumero());
+            pstm.setDouble(2,habitacion.getValor());
+            pstm.setString(3,habitacion.getTipoHabitacion());
+            pstm.setString(4,habitacion.getDescripcion());
+            pstm.setString(5,habitacion.getEstado());
+            rtdo = pstm.executeUpdate(); 
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"\nError :" + ex.getMessage());
+        }
+        finally{
+            try{
+                if(pstm!=null) pstm.close();                
+            }
+            catch(SQLException ex){
+                
+            }
+        }
+        return rtdo;
+    }
+    
+    
+    //funcion eliminarHabitacion : elimina la habitacion especificada (num : numero de habitacion)
+    public int eliminarHabitacion(int num){      
+        Connection con = null;
+        PreparedStatement pstm = null;
+        int rtdo;
+        rtdo = 0;
+        try{
+            con = Fachada.getConnection();
+            String sql = "DELETE FROM habitacion WHERE numero = ? ";
+            
+            pstm = con.prepareStatement(sql);
+            pstm.setInt(1,num);
+            
+            rtdo = pstm.executeUpdate(); 
+            return rtdo;
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Código : " + 
+                        ex.getErrorCode() + "\nError :" + ex.getMessage());
+        } 
+        finally{
+            try{
+                if(pstm!=null) pstm.close();                
+            }
+            catch(SQLException ex){
+                JOptionPane.showMessageDialog(null,"Código : " + 
+                        ex.getErrorCode() + "\nError :" + ex.getMessage());
+            }
+        }
+        return rtdo;
+    }
+    
+    //funcion modificarHabitacion : edita las caracteristicas deuna habitacion en la tabla habitacion
+    public int modificarHabitacion(Habitacion habitacion){      
+        Connection con = null;
+        PreparedStatement pstm;
+        pstm = null;
+        int rtdo;
+        rtdo = 0;
+        try{
+            con = Fachada.getConnection();
+            String sql = "UPDATE habitacion " +
+                         "SET  numero=?, valor=?, tipo_habitacion=?, descripcion_habitacion=?, estado=?" 
+                          + "WHERE numero=?";
+            
+            pstm = con.prepareStatement(sql);            
+            pstm.setInt(1,habitacion.getNumero());
+            pstm.setDouble(2,habitacion.getValor());
+            pstm.setString(3,habitacion.getTipoHabitacion());
+            pstm.setString(4,habitacion.getDescripcion());
+            pstm.setString(5,habitacion.getEstado());
+            pstm.setInt(6,habitacion.getNumero());
+            rtdo = pstm.executeUpdate();  
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"\nError :" + ex.getMessage());
+        }
+        finally{
+            try{
+                if(pstm!=null) pstm.close();                
+            }
+            catch(SQLException ex){
+                JOptionPane.showMessageDialog(null,"\nError :" + ex.getMessage());
+            }
+        }
+        return rtdo;
+    }
+    
+    
    
 }

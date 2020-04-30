@@ -76,6 +76,11 @@ public class VConsultarReservas extends javax.swing.JInternalFrame {
         });
 
         jbCancelar.setText("Cancelar");
+        jbCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -112,6 +117,17 @@ public class VConsultarReservas extends javax.swing.JInternalFrame {
         jLabel5.setText("Fecha Salida: ");
 
         jLabel6.setText("Cantidad Personas: ");
+
+        jtxtcodReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtxtcodReservaActionPerformed(evt);
+            }
+        });
+        jtxtcodReserva.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtxtcodReservaKeyTyped(evt);
+            }
+        });
 
         jtxtHabitacion.setEnabled(false);
 
@@ -259,6 +275,22 @@ public class VConsultarReservas extends javax.swing.JInternalFrame {
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
         eliminarReserva();
     }//GEN-LAST:event_jbEliminarActionPerformed
+
+    private void jtxtcodReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtcodReservaActionPerformed
+      
+    }//GEN-LAST:event_jtxtcodReservaActionPerformed
+
+    private void jtxtcodReservaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtcodReservaKeyTyped
+        // codigo para no dejar escribir caracteres de tipo string en el campo txt
+        char valor = evt.getKeyChar();
+        if (!Character.isDigit(valor)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtxtcodReservaKeyTyped
+
+    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+        dispose();
+    }//GEN-LAST:event_jbCancelarActionPerformed
 
     //eliminarreserva : elimina la reserva que tenga el codigo ingresado
     public void eliminarReserva() {

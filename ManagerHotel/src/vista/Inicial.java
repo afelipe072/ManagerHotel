@@ -141,6 +141,13 @@ public class Inicial extends JFrame{
                 centrar(v);
             }
         });
+         
+         item1.addActionListener(new java.awt.event.ActionListener() {            
+            public void actionPerformed(ActionEvent e) {
+                VHabitaciones v= new VHabitaciones();
+                centrar(v);
+            }
+        });
           
         
     }
