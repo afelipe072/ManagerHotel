@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javafx.scene.layout.Border;
 import modelo.Usuario;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,7 +40,7 @@ public class Inicial extends JFrame{
     public void iniciarComponentes(){
         
         setVisible(true);
-        setTitle("Manager Hotel 0.0.1 ");        
+        setTitle("Manager Hotel 1.0 ");        
         setExtendedState(6); 
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -51,7 +52,7 @@ public class Inicial extends JFrame{
         menu0=new JMenu("Hospedaje");
         menu1=new JMenu("Reservas");
         menu2=new JMenu("Facturacion");
-        menu3=new JMenu("configuraciones");
+        menu3=new JMenu("Configuraciones");
         menu4=new JMenu("Servicios");
         
         item0=new JMenuItem("Huespedes");
@@ -60,10 +61,10 @@ public class Inicial extends JFrame{
         item3=new JMenuItem("Reservaciones");
         item5=new JMenuItem("Consultar Reservaciones");
         item6=new JMenuItem("Facturar");
-        item7=new JMenuItem("consulta de Facturas");
+        item7=new JMenuItem("Consulta de Facturas");
         item8=new JMenuItem("Gestion de usuarios");
         item9=new JMenuItem("Salir");
-        item10=new JMenuItem("Ayuda");
+        item10=new JMenuItem("Acerca de...");
         item11=new JMenuItem("Servicio Habitacion");
         item12=new JMenuItem("Lavanderia");
         item13=new JMenuItem("Cambiar Contraseña");
@@ -148,11 +149,19 @@ public class Inicial extends JFrame{
                 centrar(v);
             }
         });
+         
+         item10.addActionListener(new java.awt.event.ActionListener() {          
+            public void actionPerformed(ActionEvent e) {
+                acercaDe( e);
+            }
+        });
           
         
     }
     
-    
+    public void acercaDe(ActionEvent e){
+        JOptionPane.showMessageDialog(this,"ManagerHotel V 1.0","Acerca de ",2);
+    }
     
     public void centrar (JInternalFrame v){
         int x = (JDpanel.getWidth() / 2) - v.getWidth() /2;
