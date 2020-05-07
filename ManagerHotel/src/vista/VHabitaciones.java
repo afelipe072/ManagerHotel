@@ -10,6 +10,7 @@ import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import jdk.nashorn.internal.objects.NativeArray;
 import modelo.Habitacion;
 
@@ -46,13 +47,15 @@ public class VHabitaciones extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtxtaDescripcion = new javax.swing.JTextArea();
         jcEstado = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setClosable(true);
         setIconifiable(true);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "Opciones"));
 
-        jbbuscar.setText("Buscar");
+        jbbuscar.setText("Editar");
         jbbuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbbuscarActionPerformed(evt);
@@ -85,15 +88,15 @@ public class VHabitaciones extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(40, 40, 40)
                 .addComponent(jbbuscar)
-                .addGap(35, 35, 35)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jbCrear)
-                .addGap(37, 37, 37)
+                .addGap(53, 53, 53)
                 .addComponent(jbEliminar)
-                .addGap(30, 30, 30)
+                .addGap(39, 39, 39)
                 .addComponent(jbCancelar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,8 +146,14 @@ public class VHabitaciones extends javax.swing.JInternalFrame {
         jtxtaDescripcion.setBorder(javax.swing.BorderFactory.createTitledBorder("Descripcion: "));
         jScrollPane1.setViewportView(jtxtaDescripcion);
 
-        jcEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponible", "Ocupado" }));
+        jcEstado.setEditable(true);
+        jcEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "disponible", "ocupado" }));
         jcEstado.setEnabled(false);
+        jcEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcEstadoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -159,7 +168,7 @@ public class VHabitaciones extends javax.swing.JInternalFrame {
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(17, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel2))
@@ -172,9 +181,8 @@ public class VHabitaciones extends javax.swing.JInternalFrame {
                             .addGap(10, 10, 10)
                             .addComponent(jtxtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jcEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,29 +210,88 @@ public class VHabitaciones extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Numero", "Tipo Habitacion", "Valor", "Estado"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        cargarHabitaciones();
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setResizable(false);
+            jTable1.getColumnModel().getColumn(1).setResizable(false);
+            jTable1.getColumnModel().getColumn(2).setResizable(false);
+            jTable1.getColumnModel().getColumn(3).setResizable(false);
+        }
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+                .addGap(14, 14, 14))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void limpiarListadoTabla(){
+        DefaultTableModel modelo;
+        modelo = (DefaultTableModel) jTable1.getModel();
+        for(int i=modelo.getRowCount()-1; i>=0 ; i--){
+            modelo.removeRow(i);
+        }
+    }
+    public void cargarHabitaciones() {
+        DefaultTableModel modelo;
+        modelo = (DefaultTableModel) jTable1.getModel();
+        ArrayList<Habitacion> listadoHabitaciones = new ArrayList();
+        listadoHabitaciones = ControladorHabitacion.listadoHabitaciones();
+        limpiarListadoTabla();
+        for (int i = 0; i < listadoHabitaciones.size(); i++) {
+            modelo.addRow(new Object[]{
+                listadoHabitaciones.get(i).getNumero(),
+                listadoHabitaciones.get(i).getTipoHabitacion(),
+                listadoHabitaciones.get(i).getValor(),
+                listadoHabitaciones.get(i).getEstado()});
+        }
+    }
+     
     //funcion camposVacios : verifica que los campos txt inportantes no sean nulos
     public boolean camposVacios() {
         if ("".equals(jtxtNumero.getText()) || "".equals(jtxtTipoHabitacion.getText()) || "".equals(jtxtValor.getText())) {
@@ -247,6 +314,7 @@ public class VHabitaciones extends javax.swing.JInternalFrame {
             int resultado = 0;
             resultado = ControladorHabitacion.crearHabitacion(unaHabitacion);
             if (resultado == 1) {
+                cargarHabitaciones();
                 JOptionPane.showMessageDialog(this,
                         "Habitacion Creada Con éxito",
                         "Confirmación", JOptionPane.INFORMATION_MESSAGE);
@@ -261,7 +329,7 @@ public class VHabitaciones extends javax.swing.JInternalFrame {
     }
 
     //funcion buscarHabitacion : busca una habitacion con el numero de habitacion ingresado
-    public void buscarHabitacion(int num) {
+    public void editarHabitacion(int num) {
         boolean existe = false;
         ArrayList<Habitacion> listadoHabitaciones = new ArrayList<>();
         listadoHabitaciones = ControladorHabitacion.listadoHabitaciones();
@@ -283,6 +351,17 @@ public class VHabitaciones extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "No existe una habitacion con el numero : " + num);
         }
     }
+    
+    //funcion buscarHabitacion : busca una habitacion con el numero de habitacion ingresado y se agrega la descripcion al txt Area
+    public void buscarHabitacion(int num) {
+        ArrayList<Habitacion> listadoHabitaciones = new ArrayList<>();
+        listadoHabitaciones = ControladorHabitacion.listadoHabitaciones();
+        for (Habitacion h : listadoHabitaciones) {
+            if (h.getNumero() == num) {
+                jtxtaDescripcion.setText(h.getDescripcion());
+            }
+        }
+    }
 
     //funcion modificarHabitacion : modifica los atributos de la habitacion especificada  
     public void modificarHabitacion() {
@@ -297,6 +376,7 @@ public class VHabitaciones extends javax.swing.JInternalFrame {
             int resultado = 0;
             resultado = ControladorHabitacion.modificarHabitacion(unaHabitacion);
             if (resultado == 1) {
+                cargarHabitaciones();
                 JOptionPane.showMessageDialog(this,
                         "Habitacion Modificada Con éxito",
                         "Confirmación", JOptionPane.INFORMATION_MESSAGE);
@@ -322,6 +402,7 @@ public class VHabitaciones extends javax.swing.JInternalFrame {
                 datosOriginales();
                 limpiarCampos();
                 if (resultado == 1) {
+                    cargarHabitaciones();
                     JOptionPane.showMessageDialog(this,
                             "Habitacion Eliminada Con éxito",
                             "Confirmación", JOptionPane.INFORMATION_MESSAGE);
@@ -376,10 +457,10 @@ public class VHabitaciones extends javax.swing.JInternalFrame {
     private void jbbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbbuscarActionPerformed
 
         if (!jtxtNumero.getText().trim().isEmpty()) {
-            buscarHabitacion(parseInt(jtxtNumero.getText()));
+            editarHabitacion(parseInt(jtxtNumero.getText()));
             
         } else {
-            JOptionPane.showMessageDialog(this, "Debe poner el numero de habitacion a buscar");
+            JOptionPane.showMessageDialog(this, "Debe poner el numero de habitacion a Editar");
         }
     }//GEN-LAST:event_jbbuscarActionPerformed
 
@@ -445,6 +526,30 @@ public class VHabitaciones extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_jbCancelarActionPerformed
 
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        DefaultTableModel modelo;
+        modelo = (DefaultTableModel) jTable1.getModel();
+        if (jTable1.getSelectedRow() == -1) {
+            if (jTable1.getRowCount() == 0) {
+                JOptionPane.showMessageDialog(this, "No hay registros");
+            } else {
+                JOptionPane.showMessageDialog(this, "Seleccione una fila");
+            }
+        } else {
+            jtxtNumero.setText(modelo.getValueAt(jTable1.getSelectedRow(), 0).toString());
+            jtxtTipoHabitacion.setText(modelo.getValueAt(jTable1.getSelectedRow(), 1).toString());
+            jtxtValor.setText(modelo.getValueAt(jTable1.getSelectedRow(), 2).toString());
+            String estado = modelo.getValueAt(jTable1.getSelectedRow(), 3).toString().trim();
+            jcEstado.setSelectedItem(estado);
+            
+            buscarHabitacion(parseInt(jtxtNumero.getText()));
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jcEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcEstadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcEstadoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -454,6 +559,8 @@ public class VHabitaciones extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     private javax.swing.JButton jbCancelar;
     private javax.swing.JButton jbCrear;
     private javax.swing.JButton jbEliminar;

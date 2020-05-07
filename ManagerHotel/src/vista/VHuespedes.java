@@ -29,12 +29,19 @@ public class VHuespedes extends javax.swing.JInternalFrame {
         initComponents();
     }
 
+    private void limpiarListadoTabla(){
+        DefaultTableModel modelo;
+        modelo = (DefaultTableModel) jTable1.getModel();
+        for(int i=modelo.getRowCount()-1; i>=0 ; i--){
+            modelo.removeRow(i);
+        }
+    }
     public void cargarClientes() {
         DefaultTableModel modelo;
         modelo = (DefaultTableModel) jTable1.getModel();
         ArrayList<Cliente> listadoClientes = new ArrayList();
         listadoClientes = ControladorCliente.listadoCliente();
-        //limpiarListadoTabla();
+        limpiarListadoTabla();
         for (int i = 0; i < listadoClientes.size(); i++) {
             modelo.addRow(new Object[]{
                 listadoClientes.get(i).getIdCliente(),
