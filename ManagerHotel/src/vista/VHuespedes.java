@@ -8,7 +8,6 @@ package vista;
 import control.ControladorCliente;
 import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
@@ -107,6 +106,11 @@ public class VHuespedes extends javax.swing.JInternalFrame {
                 jtxtIdActionPerformed(evt);
             }
         });
+        jtxtId.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtxtIdKeyTyped(evt);
+            }
+        });
 
         jtxtApellido.setEnabled(false);
 
@@ -114,6 +118,11 @@ public class VHuespedes extends javax.swing.JInternalFrame {
         jtxtTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtxtTelefonoActionPerformed(evt);
+            }
+        });
+        jtxtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtxtTelefonoKeyTyped(evt);
             }
         });
 
@@ -350,6 +359,7 @@ public class VHuespedes extends javax.swing.JInternalFrame {
             int resultado = 0;
             resultado = ControladorCliente.eliminarCliente(id);
             if (resultado == 1) {
+                cargarClientes();
                 JOptionPane.showMessageDialog(this,
                         "Cliente Eliminado Con éxito",
                         "Confirmación", JOptionPane.INFORMATION_MESSAGE);
@@ -378,6 +388,7 @@ public class VHuespedes extends javax.swing.JInternalFrame {
             int resultado = 0;
             resultado = ControladorCliente.crearCliente(unCliente);
             if (resultado == 1) {
+                cargarClientes();
                 JOptionPane.showMessageDialog(this,
                         "Cliente Creado Con éxito",
                         "Confirmación", JOptionPane.INFORMATION_MESSAGE);
@@ -406,6 +417,7 @@ public class VHuespedes extends javax.swing.JInternalFrame {
             int resultado = 0;
             resultado = ControladorCliente.modificarCliente(unCliente);
             if (resultado == 1) {
+                cargarClientes();
                 JOptionPane.showMessageDialog(this,
                         "Cliente Modificado Con éxito",
                         "Confirmación", JOptionPane.INFORMATION_MESSAGE);
@@ -529,6 +541,22 @@ public class VHuespedes extends javax.swing.JInternalFrame {
             jtxtCorreo.setText(modelo.getValueAt(jTable1.getSelectedRow(), 7).toString());
         }
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jtxtIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtIdKeyTyped
+        // codigo para no dejar escribir caracteres de tipo string en el campo txt
+        char valor = evt.getKeyChar();
+        if (!Character.isDigit(valor)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtxtIdKeyTyped
+
+    private void jtxtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtTelefonoKeyTyped
+        // codigo para no dejar escribir caracteres de tipo string en el campo txt
+        char valor = evt.getKeyChar();
+        if (!Character.isDigit(valor)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtxtTelefonoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -195,6 +195,7 @@
         <Component class="javax.swing.JTextField" name="jtxtId">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtxtIdActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtxtIdKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jtxtApellido">
@@ -208,6 +209,7 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtxtTelefonoActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtxtTelefonoKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jtxtOcupacion">
