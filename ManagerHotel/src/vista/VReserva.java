@@ -44,8 +44,6 @@ public class VReserva extends javax.swing.JInternalFrame {
         vistaHuesped = vHuesped;
         JDpanel = panel;
         initComponents();
-        TextPrompt infFechaIngreso = new TextPrompt("YYYY/MM/DD", jtxtFechIngreso);
-        TextPrompt infFechaSalida = new TextPrompt("YYYY/MM/DD", jtxtFechSalida);
         generarNumReserva();
         numHabitaciones(jcbNumHabitacion);
     }
@@ -59,12 +57,12 @@ public class VReserva extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jtxtNumPersonas = new javax.swing.JTextField();
-        jtxtFechSalida = new javax.swing.JTextField();
         jcbNumHabitacion = new javax.swing.JComboBox();
         jlabel093 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jlReserva = new javax.swing.JLabel();
-        jtxtFechIngreso = new javax.swing.JTextField();
+        jDIngreso = new com.toedter.calendar.JDateChooser();
+        jDSalida = new com.toedter.calendar.JDateChooser();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtxtAreaDescripcion = new javax.swing.JTextPane();
@@ -92,14 +90,6 @@ public class VReserva extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Numero de Personas:");
 
-        jtxtFechSalida.setDisabledTextColor(new java.awt.Color(51, 51, 51));
-        jtxtFechSalida.setName(""); // NOI18N
-        jtxtFechSalida.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtxtFechSalidaActionPerformed(evt);
-            }
-        });
-
         jcbNumHabitacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbNumHabitacionActionPerformed(evt);
@@ -112,13 +102,6 @@ public class VReserva extends javax.swing.JInternalFrame {
 
         jlReserva.setText("...");
 
-        jtxtFechIngreso.setDisabledTextColor(new java.awt.Color(51, 51, 51));
-        jtxtFechIngreso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtxtFechIngresoActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -130,6 +113,11 @@ public class VReserva extends javax.swing.JInternalFrame {
                         .addComponent(jlabel093)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jlReserva)
+                        .addGap(72, 72, 72))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
                             .addComponent(jLabel4)
@@ -139,37 +127,35 @@ public class VReserva extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jtxtNumPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jtxtFechIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jtxtFechSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(31, 31, 31))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(30, 30, 30)
                                 .addComponent(jcbNumHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jlReserva)
-                        .addGap(72, 72, 72))))
+                                .addContainerGap(40, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jDSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jDIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(31, 31, 31))))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jlReserva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(24, 24, 24)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlabel)
-                    .addComponent(jtxtFechIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap(25, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(jlReserva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(27, 27, 27)
+                        .addComponent(jlabel))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jDIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jlabel093)
-                    .addComponent(jtxtFechSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -180,9 +166,6 @@ public class VReserva extends javax.swing.JInternalFrame {
                     .addComponent(jtxtNumPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38))
         );
-
-        jtxtFechSalida.getAccessibleContext().setAccessibleName("");
-        jtxtFechSalida.getAccessibleContext().setAccessibleDescription("");
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "Informacion Habitación:"));
 
@@ -348,7 +331,7 @@ public class VReserva extends javax.swing.JInternalFrame {
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
@@ -447,7 +430,7 @@ public class VReserva extends javax.swing.JInternalFrame {
     
     // camposVacios retorna true si todos los campos estan llenos o false si hay campos vacios
     public boolean camposVacios(){
-        if("".equals(jtxtId.getText()) || "".equals(jtxtFechIngreso.getText()) || "".equals(jtxtFechSalida.getText()) || jcbNumHabitacion.getSelectedItem().toString()=="" || "".equals(jtxtNumPersonas.getText())){
+        if("".equals(jtxtId.getText()) || "".equals(jDIngreso.getDate().toString()) || "".equals(jDSalida.getDate().toString()) || jcbNumHabitacion.getSelectedItem().toString()=="" || "".equals(jtxtNumPersonas.getText())){
             return false;
         }
         else{
@@ -459,8 +442,6 @@ public class VReserva extends javax.swing.JInternalFrame {
     public void limpiarCampos(){
         jtxtId.setText("");
         jtxtAreaDescripcion.setText("");
-        jtxtFechIngreso.setText("");
-        jtxtFechSalida.setText("");
         jtxtNombre.setText("");
         jtxtNumPersonas.setText("");
         jlEstado.setText("...");
@@ -468,19 +449,58 @@ public class VReserva extends javax.swing.JInternalFrame {
         generarNumReserva();
     }
     
+     // verificarFechas : verifica que para una habitacion no se crucen las fechas de reserva
+    public boolean verificarFechas() {
+        java.util.Date fechaNuevaI = jDIngreso.getDate();
+        java.util.Date fechaNuevaS = jDSalida.getDate();
+        int numHabitacion = (int) jcbNumHabitacion.getSelectedItem();
+        System.out.println(numHabitacion);
+        ArrayList<Reserva> listadoReservas = new ArrayList();
+        listadoReservas = ControladorReserva.listadoReserva();
+        for (Reserva r: listadoReservas) {
+            if(r.getNumeroHabitacion() == numHabitacion){
+                java.sql.Date fechaBaseI = r.getFechaEntrada();
+                java.sql.Date fechaBaseS = r.getFechaSalida();
+                if(fechaNuevaI.after(fechaBaseI) && fechaNuevaI.before(fechaBaseS)){
+                    JOptionPane.showMessageDialog(this, "La habitacion : "+numHabitacion+" Ya se encuentra reservada desde la fecha : "+fechaBaseI+
+                                " hasta la fecha : "+fechaBaseS);
+                    return true;
+                }
+                if(fechaNuevaS.after(fechaBaseI) && fechaNuevaS.before(fechaBaseS)){
+                    JOptionPane.showMessageDialog(this, "La habitacion : "+numHabitacion+" Ya se encuentra reservada desde la fecha : "+fechaBaseI+
+                                " hasta la fecha : "+fechaBaseS);
+                    return true;
+                }
+                if(fechaBaseI.after(fechaNuevaI) && fechaBaseI.before(fechaNuevaS)){
+                    JOptionPane.showMessageDialog(this, "La habitacion : "+numHabitacion+" Ya se encuentra reservada desde la fecha : "+fechaBaseI+
+                                " hasta la fecha : "+fechaBaseS);
+                    return true;
+                }
+                if(fechaBaseS.after(fechaNuevaI) && fechaBaseS.before(fechaNuevaS)){
+                    JOptionPane.showMessageDialog(this, "La habitacion : "+numHabitacion+" Ya se encuentra reservada desde la fecha : "+fechaBaseI+
+                                " hasta la fecha : "+fechaBaseS);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
     //crearReserva :  crea la reserva si toda la informacion esta completa
     public void crearReserva(){
-        if(camposVacios()){            
-            long fechaE = Long.parseLong(jtxtFechIngreso.getText());
-            long fechaS = Long.parseLong(jtxtFechSalida.getText());
-            java.sql.Date data = new java.sql.Date(fechaE);
-            java.sql.Date data2 = new java.sql.Date(fechaS);
+        if(camposVacios() && !verificarFechas()){            
+            java.util.Date dateI = jDIngreso.getDate();
+            java.util.Date dateS = jDSalida.getDate();
+            long i = dateI.getTime();
+            long s = dateS.getTime();
+            java.sql.Date fechaI = new java.sql.Date(i);
+            java.sql.Date fechaS = new java.sql.Date(s);
             Reserva unaReserva = new Reserva();
             unaReserva.setCodigoReserva(parseInt(jlReserva.getText()));
             unaReserva.setNumeroHabitacion(Integer.parseInt(jcbNumHabitacion.getSelectedItem().toString()));
             unaReserva.setCodCliente(parseInt(jtxtId.getText()));
-            unaReserva.setFechaEntrada(data);
-            unaReserva.setFechaSalida(data2);
+            unaReserva.setFechaEntrada(fechaI);
+            unaReserva.setFechaSalida(fechaS);
             unaReserva.setCantidadPersonas(parseInt(jtxtNumPersonas.getText()));
             
             int resultado = 0;
@@ -507,10 +527,6 @@ public class VReserva extends javax.swing.JInternalFrame {
     }
      
 
-
-    private void jtxtFechIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtFechIngresoActionPerformed
-
-    }//GEN-LAST:event_jtxtFechIngresoActionPerformed
 
     private void jtxtIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtIdKeyTyped
         // codigo para no dejar escribir caracteres de tipo string en el campo txt
@@ -551,10 +567,6 @@ public class VReserva extends javax.swing.JInternalFrame {
         infHabitacion();
     }//GEN-LAST:event_jcbNumHabitacionActionPerformed
 
-    private void jtxtFechSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtFechSalidaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtxtFechSalidaActionPerformed
-
     private void jtxtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtxtIdActionPerformed
@@ -569,6 +581,8 @@ public class VReserva extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser jDIngreso;
+    private com.toedter.calendar.JDateChooser jDSalida;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -588,8 +602,6 @@ public class VReserva extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlabel;
     private javax.swing.JLabel jlabel093;
     private javax.swing.JTextPane jtxtAreaDescripcion;
-    private javax.swing.JTextField jtxtFechIngreso;
-    private javax.swing.JTextField jtxtFechSalida;
     private javax.swing.JTextField jtxtId;
     private javax.swing.JTextField jtxtNombre;
     private javax.swing.JTextField jtxtNumPersonas;
