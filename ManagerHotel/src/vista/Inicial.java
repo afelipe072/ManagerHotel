@@ -42,7 +42,7 @@ public class Inicial extends JFrame{
         setVisible(true);
         setTitle("Manager Hotel 1.0 ");        
         setExtendedState(6); 
-        setResizable(false);
+        setResizable(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setIconImage(new ImageIcon(getClass().getResource("/imagenes/hotel.png")).getImage());       
                 
