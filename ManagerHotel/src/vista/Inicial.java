@@ -178,7 +178,7 @@ public class Inicial extends JFrame{
     
     
     public void validarPermisos(){
-        if(unUsuario.getRol().equalsIgnoreCase("operativo")){
+        if(unUsuario.getRol().trim().equalsIgnoreCase("operativo")){
             item1.setEnabled(false);
             item8.setEnabled(false);
         }

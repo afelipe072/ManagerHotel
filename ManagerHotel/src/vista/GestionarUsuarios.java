@@ -108,7 +108,7 @@ public class GestionarUsuarios extends javax.swing.JInternalFrame {
         jlRol.setText("Rol:");
 
         jcbRol.setEnabled(false);
-        jcbRol.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Admin", "Operativo" }));
+        jcbRol.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "administrador", "operativo" }));
 
         jlTelefono.setText("Telefono:");
 
@@ -230,11 +230,10 @@ public class GestionarUsuarios extends javax.swing.JInternalFrame {
                 .addGap(43, 43, 43)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jbCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jbNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbBorrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jbNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbBorrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(54, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -314,7 +313,7 @@ public class GestionarUsuarios extends javax.swing.JInternalFrame {
             jtxtID.setText(modelo.getValueAt(jTable1.getSelectedRow(), 1).toString());
             jtxtNombre.setText(modelo.getValueAt(jTable1.getSelectedRow(),2).toString());
             jtxtApellido.setText(modelo.getValueAt(jTable1.getSelectedRow(),3).toString());
-            jcbRol.setSelectedItem(modelo.getValueAt(jTable1.getSelectedRow(),4).toString());
+            jcbRol.setSelectedItem(modelo.getValueAt(jTable1.getSelectedRow(),4).toString().trim());
             jtxtTelefono.setText(modelo.getValueAt(jTable1.getSelectedRow(),5).toString());
             jtxtUser.setText(modelo.getValueAt(jTable1.getSelectedRow(),6).toString());
             jpContraseña.setText(modelo.getValueAt(jTable1.getSelectedRow(),7).toString());   
