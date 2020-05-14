@@ -19,7 +19,8 @@ public class ServicioDAO{
         
         try{
             con = Fachada.getConnection();
-            String sql="SELECT * FROM servicio";
+            String sql="select * from servicio";
+            
             pstm = con.prepareStatement(sql);
             rs = pstm.executeQuery();
             
@@ -113,9 +114,7 @@ public class ServicioDAO{
         rtdo = 0;
         try{
             con = Fachada.getConnection();
-            String sql = "update servicio" + 
-                    "set codigo_servicio = ?, valor_servicio = ?, descripcion = ?" +
-                    "where codigo_servicio = ?";
+           String sql = "UPDATE servicio set codigo_servicio=?,valor_servicio=?,descripcion=? where codigo_servicio=?";
             
             pstm = con.prepareStatement(sql);
             pstm.setInt(1, servicio.get_codigo());

@@ -65,15 +65,15 @@ public class Inicial extends JFrame{
         item8=new JMenuItem("Gestion de usuarios");
         item9=new JMenuItem("Salir");
         item10=new JMenuItem("Acerca de...");
-        item11=new JMenuItem("Servicio Habitacion");
-        item12=new JMenuItem("Lavanderia");
+        item11=new JMenuItem("Gestionar Servicios");
+       // item12=new JMenuItem("Lavanderia");
         item13=new JMenuItem("Cambiar Contraseña");
         
         menu0.add(item0);menu0.add(item1);menu0.add(item2);
         menu1.add(item3);menu1.add(item5);
         menu2.add(item6);menu2.add(item7);
         menu3.add(item8);menu3.add(item13);menu3.add(item9);menu3.add(item10);
-        menu4.add(item11);menu4.add(item12);
+        menu4.add(item11);//menu4.add(item12);
         
         
         usuarioActivo=new JLabel("Usuario Activo: "+ unUsuario.getNombre() + " "+ unUsuario.getApellido()+"    ");
@@ -107,6 +107,14 @@ public class Inicial extends JFrame{
                 centrar(v);
             }
         });
+        
+         item11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                VServicios s = new VServicios(unUsuario);
+                centrar(s);
+            }
+        });
+        
         
         item3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent e){
