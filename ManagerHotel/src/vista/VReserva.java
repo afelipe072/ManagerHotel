@@ -9,6 +9,7 @@ import java.awt.Color;
 import Herramientas.TextPrompt;
 import control.ControladorCliente;
 import control.ControladorHabitacion;
+import control.ControladorRegistro;
 import control.ControladorReserva;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -29,6 +30,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import modelo.Cliente;
 import modelo.Habitacion;
+import modelo.Registro;
 import modelo.Reserva;
 import modelo.Usuario;
 
@@ -124,19 +126,16 @@ public class VReserva extends javax.swing.JInternalFrame {
                             .addComponent(jlabel))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jtxtNumPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(30, 30, 30)
                                 .addComponent(jcbNumHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(40, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jDSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jDIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(31, 31, 31))))))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jtxtNumPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jDSalida, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                                    .addComponent(jDIngreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -387,6 +386,18 @@ public class VReserva extends javax.swing.JInternalFrame {
         return false;
     }
     
+    
+     //buscarRegistro : retorna true si el registro ingresado existe en la base de datos o false si no
+    public boolean buscarRegistro(int cod){
+        ArrayList<Registro> listadoRegistro = new ArrayList();
+        listadoRegistro = ControladorRegistro.listadoRegistro();
+        for (int i = 0; i < listadoRegistro.size(); i++) {
+            if(listadoRegistro.get(i).getCodigoRegistro() == cod){
+                return true;
+            }   
+        }
+        return false;
+    }
     // generarNumReserva : genera un numero de reserva que no exista en la base de datos
     public void generarNumReserva(){
         String num = "";
@@ -397,7 +408,7 @@ public class VReserva extends javax.swing.JInternalFrame {
         }
         codReserva = parseInt(num);
         
-        if(buscarReserva(codReserva)){
+        if(buscarReserva(codReserva) || buscarRegistro(codReserva)){
             generarNumReserva();
         }else{
             jlReserva.setText(num);
@@ -431,6 +442,7 @@ public class VReserva extends javax.swing.JInternalFrame {
     // camposVacios retorna true si todos los campos estan llenos o false si hay campos vacios
     public boolean camposVacios(){
         if("".equals(jtxtId.getText()) || "".equals(jDIngreso.getDate().toString()) || "".equals(jDSalida.getDate().toString()) || jcbNumHabitacion.getSelectedItem().toString()=="" || "".equals(jtxtNumPersonas.getText())){
+            JOptionPane.showMessageDialog(this, "por favor llene todos los campos");
             return false;
         }
         else{
@@ -454,7 +466,6 @@ public class VReserva extends javax.swing.JInternalFrame {
         java.util.Date fechaNuevaI = jDIngreso.getDate();
         java.util.Date fechaNuevaS = jDSalida.getDate();
         int numHabitacion = (int) jcbNumHabitacion.getSelectedItem();
-        System.out.println(numHabitacion);
         ArrayList<Reserva> listadoReservas = new ArrayList();
         listadoReservas = ControladorReserva.listadoReserva();
         for (Reserva r: listadoReservas) {
@@ -483,8 +494,35 @@ public class VReserva extends javax.swing.JInternalFrame {
                 }
             }
         }
+        for (Registro re: ControladorRegistro.listadoRegistro()) {
+            if(re.getNumeroHabitacion() == numHabitacion){
+                java.sql.Date fechaBaseI = re.getFechaEntrada();
+                java.sql.Date fechaBaseS = re.getFechaSalida();
+                if(fechaNuevaI.after(fechaBaseI) && fechaNuevaI.before(fechaBaseS)){
+                    JOptionPane.showMessageDialog(this, "La habitacion : "+numHabitacion+" se encuentra ocupada desde la fecha : "+fechaBaseI+
+                                " hasta la fecha : "+fechaBaseS);
+                    return true;
+                }
+                if(fechaNuevaS.after(fechaBaseI) && fechaNuevaS.before(fechaBaseS)){
+                    JOptionPane.showMessageDialog(this, "La habitacion : "+numHabitacion+" se encuentra ocupada desde la fecha : "+fechaBaseI+
+                                " hasta la fecha : "+fechaBaseS);
+                    return true;
+                }
+                if(fechaBaseI.after(fechaNuevaI) && fechaBaseI.before(fechaNuevaS)){
+                    JOptionPane.showMessageDialog(this, "La habitacion : "+numHabitacion+" se encuentra ocupada desde la fecha : "+fechaBaseI+
+                                " hasta la fecha : "+fechaBaseS);
+                    return true;
+                }
+                if(fechaBaseS.after(fechaNuevaI) && fechaBaseS.before(fechaNuevaS)){
+                    JOptionPane.showMessageDialog(this, "La habitacion : "+numHabitacion+" se encuentra ocupada desde la fecha : "+fechaBaseI+
+                                " hasta la fecha : "+fechaBaseS);
+                    return true;
+                }
+            }
+        }
         return false;
     }
+    
     
     //crearReserva :  crea la reserva si toda la informacion esta completa
     public void crearReserva(){
@@ -507,7 +545,7 @@ public class VReserva extends javax.swing.JInternalFrame {
             resultado = ControladorReserva.crearReserva(unaReserva);
             if (resultado == 1) {
                 JOptionPane.showMessageDialog(this,
-                        "Reserva Reaizada Con éxito",
+                        "Reserva Realizada Con éxito",
                         "Confirmación", JOptionPane.INFORMATION_MESSAGE);
                 limpiarCampos();
             } else {

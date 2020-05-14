@@ -93,6 +93,8 @@ public class Inicial extends JFrame{
         validarPermisos();
         
         
+        
+        
         item9.addActionListener(new java.awt.event.ActionListener() {            
             public void actionPerformed(ActionEvent e) {
                 dispose();
@@ -153,6 +155,14 @@ public class Inicial extends JFrame{
          item10.addActionListener(new java.awt.event.ActionListener() {          
             public void actionPerformed(ActionEvent e) {
                 acercaDe( e);
+            }
+        });
+         
+         
+        item2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                VCheckIngCheckOut vCheckIngCheckOut=new VCheckIngCheckOut();
+                centrar(vCheckIngCheckOut);
             }
         });
           
