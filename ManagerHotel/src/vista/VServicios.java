@@ -75,8 +75,14 @@ public class VServicios extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "¡El código del servicio es obligatorio!");
         }else{
             Servicio un_servicio = new Servicio();
+            
+            if(txt_valor.getText().trim().equals("")){
+                un_servicio.set_valor(0);
+            }else{
+                un_servicio.set_valor(Double.parseDouble(txt_valor.getText()));
+            }
+            
             un_servicio.set_codigo(Integer.parseInt(txt_cod.getText()));
-            un_servicio.set_valor(Double.parseDouble(txt_valor.getText()));
             un_servicio.set_descripcion(txt_desc.getText());
             
             int resultado = 0;
@@ -97,8 +103,14 @@ public class VServicios extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "¡Es obligatorio proporcionar el código del servicio!");
         }else{
             Servicio un_servicio = new Servicio();
+            
+             if(txt_valor.getText().trim().equals("")){
+                un_servicio.set_valor(0);
+            }else{
+                un_servicio.set_valor(Double.parseDouble(txt_valor.getText()));
+            }
+            
             un_servicio.set_codigo(Integer.parseInt(txt_cod.getText()));
-            un_servicio.set_valor(Double.parseDouble(txt_valor.getText()));
             un_servicio.set_descripcion(txt_desc.getText());
             
            int resultado = 0;
@@ -399,21 +411,24 @@ public class VServicios extends javax.swing.JInternalFrame {
     
     private void jb_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_eliminarActionPerformed
         
-        if(txt_cod.getText().trim().equals("")){
-        
-            JOptionPane.showMessageDialog(null, "¡Es necesario el código del servicio!");
-        }else{
+        if(jb_eliminar.getText().equalsIgnoreCase("Cancelar")){
             
-            if (jb_eliminar.getText().equalsIgnoreCase("Cancelar")) {
             jb_agregar.setText("Agregar");
             jb_eliminar.setText("Eliminar");
+            limpiarCampos();
             desactivarCamposTxt();
             jb_buscar.setVisible(true);
             jb_actualizar.setVisible(true);
-        } else {
-            eliminar_servicio(Integer.parseInt(txt_cod.getText()));
-        }
-        }
+            
+        }else{
+            if(txt_cod.getText().trim().equals("")){
+                 JOptionPane.showMessageDialog(null, "¡Es necesario el código del servicio!");
+            }else{
+                eliminar_servicio(Integer.parseInt(txt_cod.getText()));
+            }
+        } //*****
+        
+       
         
     }//GEN-LAST:event_jb_eliminarActionPerformed
 
