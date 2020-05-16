@@ -71,18 +71,13 @@ public class VServicios extends javax.swing.JInternalFrame {
     }
    
     public void crear_servicio(){
-        if(txt_cod.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(this, "¡El código del servicio es obligatorio!");
+        if(txt_cod.getText().trim().equals("") || txt_valor.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(this, "¡El código del servicio y el valor son obligatorios!");
         }else{
             Servicio un_servicio = new Servicio();
-            
-            if(txt_valor.getText().trim().equals("")){
-                un_servicio.set_valor(0);
-            }else{
-                un_servicio.set_valor(Double.parseDouble(txt_valor.getText()));
-            }
-            
+                        
             un_servicio.set_codigo(Integer.parseInt(txt_cod.getText()));
+            un_servicio.set_valor(Double.parseDouble(txt_valor.getText()));
             un_servicio.set_descripcion(txt_desc.getText());
             
             int resultado = 0;
@@ -99,18 +94,13 @@ public class VServicios extends javax.swing.JInternalFrame {
     
     public void modificar_servicio(){
         
-        if(txt_cod.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null, "¡Es obligatorio proporcionar el código del servicio!");
+        if(txt_cod.getText().trim().equals("") || txt_valor.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null, "¡El código del servicio y el valor son obligatorios!");
         }else{
             Servicio un_servicio = new Servicio();
             
-             if(txt_valor.getText().trim().equals("")){
-                un_servicio.set_valor(0);
-            }else{
-                un_servicio.set_valor(Double.parseDouble(txt_valor.getText()));
-            }
-            
             un_servicio.set_codigo(Integer.parseInt(txt_cod.getText()));
+            un_servicio.set_valor(Double.parseDouble(txt_valor.getText()));
             un_servicio.set_descripcion(txt_desc.getText());
             
            int resultado = 0;
