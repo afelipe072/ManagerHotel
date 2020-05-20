@@ -51,7 +51,7 @@ public class Inicial extends JFrame{
         
         menu0=new JMenu("Hospedaje");
         menu1=new JMenu("Reservas");
-        menu2=new JMenu("Facturacion");
+        menu2=new JMenu("Pagos");
         menu3=new JMenu("Configuraciones");
         menu4=new JMenu("Servicios");
         
@@ -60,7 +60,7 @@ public class Inicial extends JFrame{
         item2=new JMenuItem("Check-In y Check-Out");
         item3=new JMenuItem("Reservaciones");
         item5=new JMenuItem("Consultar Reservaciones");
-        item6=new JMenuItem("Facturar");
+        item6=new JMenuItem("Consultar Pagos");
         item7=new JMenuItem("Consulta de Facturas");
         item8=new JMenuItem("Gestion de usuarios");
         item9=new JMenuItem("Salir");
@@ -71,7 +71,7 @@ public class Inicial extends JFrame{
         
         menu0.add(item0);menu0.add(item1);menu0.add(item2);
         menu1.add(item3);menu1.add(item5);
-        menu2.add(item6);menu2.add(item7);
+        menu2.add(item6);//menu2.add(item7);
         menu3.add(item8);menu3.add(item13);menu3.add(item9);menu3.add(item10);
         menu4.add(item11);menu4.add(item12);
         
@@ -140,7 +140,7 @@ public class Inicial extends JFrame{
         
          item6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                VFacturaciones v=new VFacturaciones();
+                VConsultarPago v=new VConsultarPago();
                 centrar(v);
             }
         });
@@ -206,6 +206,7 @@ public class Inicial extends JFrame{
         if(unUsuario.getRol().trim().equalsIgnoreCase("operativo")){
             item1.setEnabled(false);
             item8.setEnabled(false);
+            item11.setEnabled(false);
         }
     }
     
