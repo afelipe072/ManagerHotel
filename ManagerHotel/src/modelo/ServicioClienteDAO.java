@@ -57,12 +57,13 @@ public class ServicioClienteDAO {
         rtdo = 0;
         try{
         con = Fachada.getConnection();
-        String sql = "insert into servicio_cliente(id_cliente, codigo_servicio)" +
-                "values (?,?)";
+        String sql = "insert into servicio_cliente(id_cliente, codigo_servicio, fecha_servicio)" +
+                "values (?,?,?)";
         
         pstm = con.prepareStatement(sql);
         pstm.setInt(1, servicio.getIdCliente());
         pstm.setDouble(2, servicio.getCodServicio());
+        pstm.setDate(3, servicio.getFecha_Servicio());
         rtdo = pstm.executeUpdate();
         }
         catch(SQLException e){
