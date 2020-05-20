@@ -24,4 +24,13 @@ public class ControladorRegistro {
         return resultado;
     }
     
+     public static int borrarRegistro(String codigo)
+    {
+        RegistroDAO registroDAO = new RegistroDAO();
+        int resultado = registroDAO.borrarRegistro(codigo);
+        return resultado; 
+    } 
+     
+     
+     
 }

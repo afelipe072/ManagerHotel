@@ -57,7 +57,7 @@ public class Inicial extends JFrame{
         
         item0=new JMenuItem("Huespedes");
         item1=new JMenuItem("Habitaciones");
-        item2=new JMenuItem("checkin y Checkout");
+        item2=new JMenuItem("Check-In y Check-Out");
         item3=new JMenuItem("Reservaciones");
         item5=new JMenuItem("Consultar Reservaciones");
         item6=new JMenuItem("Facturar");

@@ -2,6 +2,7 @@
 package modelo;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,7 +21,7 @@ public class ServicioClienteDAO {
         
         try{
             con = Fachada.getConnection();
-            String sql="select * from servicio_cliente";
+            String sql= "select * from servicio_cliente ";
             
             pstm = con.prepareStatement(sql);
             rs = pstm.executeQuery();
@@ -76,5 +77,78 @@ public class ServicioClienteDAO {
         }
         return rtdo;
     }
+    
+   public ArrayList<Double> listaValorServicios(int id_cliente, Date fechaIngreso, Date fechaSalida){
+        Connection con = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        ArrayList<Double> valores=new ArrayList();
+        
+        
+        try{
+            con = Fachada.getConnection();
+            String sql= "select valor_servicio from servicio_cliente natural join servicio "
+                      +"where id_cliente = ' " +id_cliente +"' and fecha_servicio >= '"+fechaIngreso +"' and "+"fecha_servicio <= '"+fechaSalida+"'";
+                    
+            
+            pstm = con.prepareStatement(sql);
+            rs = pstm.executeQuery();
+            
+            while(rs.next()){
+                valores.add(rs.getDouble("valor_servicio"));
+            }
+        }
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally{
+            try{
+                if(rs!=null) rs.close();
+                if(pstm!=null) pstm.close(); 
+            }
+            catch(SQLException e){
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
+        }
+        return valores;
+    }  
+   
+   public ArrayList<String> listaServicios(int id_cliente ,Date fechaIngreso, Date fechaSalida){
+        Connection con = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        ArrayList<String> descripciones=new ArrayList();
+        
+        
+        try{
+            con = Fachada.getConnection();
+            String sql= "select descripcion from servicio_cliente natural join servicio "
+                      +"where id_cliente = ' " +id_cliente +"' and fecha_servicio >= '"+fechaIngreso +"' and "+"fecha_servicio <= '"+fechaSalida+"'";
+                    
+            
+            pstm = con.prepareStatement(sql);
+            rs = pstm.executeQuery();
+            
+            while(rs.next()){
+                descripciones.add(rs.getString("descripcion"));
+            }
+        }
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally{
+            try{
+                if(rs!=null) rs.close();
+                if(pstm!=null) pstm.close(); 
+            }
+            catch(SQLException e){
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
+        }
+        return descripciones;
+    }
+     
+     
+     
     
 }

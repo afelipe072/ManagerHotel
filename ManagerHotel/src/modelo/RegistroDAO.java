@@ -90,5 +90,41 @@ public class RegistroDAO {
         }
         return rtdo;
     }
+        
+    public int borrarRegistro(String codigo){      
+        Connection con = null;
+        PreparedStatement pstm = null;
+        int rtdo;
+        rtdo = 0;
+        try{
+            con = Fachada.getConnection();
+            String sql = "DELETE FROM registro WHERE codigo_registro = ? ";
+            
+            pstm = con.prepareStatement(sql);
+            pstm.setInt(1,Integer.parseInt(codigo));
+            
+            rtdo = pstm.executeUpdate(); 
+            return rtdo;
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Código : " + 
+                        ex.getErrorCode() + "\nError :" + ex.getMessage());
+        } 
+        finally{
+            try{
+                if(pstm!=null) pstm.close();                
+            }
+            catch(SQLException ex){
+                JOptionPane.showMessageDialog(null,"Código : " + 
+                        ex.getErrorCode() + "\nError :" + ex.getMessage());
+            }
+        }
+        return rtdo;
+    }
+    
+    
+    
+    
+    
     
 }
