@@ -5,6 +5,7 @@
  */
 package vista;
 
+import com.sun.glass.events.KeyEvent;
 import control.ControladorHabitacion;
 import control.ControladorPago;
 import control.ControladorRegistro;
@@ -33,9 +34,9 @@ public final class VCheckIngCheckOut extends javax.swing.JInternalFrame {
     public VCheckIngCheckOut() {
         
         initComponents();
-        numReservas(jcReservas);
+       // numReservas(txtReserva);
         numHabitaciones(jcNumHabitacion);
-        numeroRegistros(jcRegistros);
+       // numeroRegistros(jcRegistros);
         jlNumRegistro.setVisible(false);
         jbReserva.setEnabled(false);
     }
@@ -55,7 +56,6 @@ public final class VCheckIngCheckOut extends javax.swing.JInternalFrame {
         jbReserva = new javax.swing.JButton();
         jbRegistro = new javax.swing.JButton();
         jlCodChecking = new javax.swing.JLabel();
-        jcReservas = new javax.swing.JComboBox<String>();
         jLabel1 = new javax.swing.JLabel();
         jtxtId = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -68,8 +68,8 @@ public final class VCheckIngCheckOut extends javax.swing.JInternalFrame {
         jtxtNumPersonas = new javax.swing.JTextField();
         jbGuardar = new javax.swing.JButton();
         jlNumRegistro = new javax.swing.JLabel();
+        txtReserva = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
-        jcRegistros = new javax.swing.JComboBox<String>();
         jLabel10 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -90,6 +90,7 @@ public final class VCheckIngCheckOut extends javax.swing.JInternalFrame {
         jLabel15 = new javax.swing.JLabel();
         jlNumeroPago = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        txtRegistro = new javax.swing.JTextField();
 
         jLabel2.setText("jLabel2");
 
@@ -113,12 +114,6 @@ public final class VCheckIngCheckOut extends javax.swing.JInternalFrame {
 
         jlCodChecking.setText("Seleccione la Reserva: ");
 
-        jcReservas.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jcReservasItemStateChanged(evt);
-            }
-        });
-
         jLabel1.setText("Identificacion cliente: ");
 
         jLabel3.setText("Fecha Ingreso: ");
@@ -137,6 +132,12 @@ public final class VCheckIngCheckOut extends javax.swing.JInternalFrame {
         });
 
         jlNumRegistro.setAlignmentX(0.5F);
+
+        txtReserva.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtReservaKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -164,13 +165,13 @@ public final class VCheckIngCheckOut extends javax.swing.JInternalFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jDIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jcReservas, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jlNumRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jDSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jcNumHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jtxtNumPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(56, Short.MAX_VALUE))
+                                .addGap(56, 56, 56))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jtxtId, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))))
@@ -186,7 +187,7 @@ public final class VCheckIngCheckOut extends javax.swing.JInternalFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(54, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbReserva)
                     .addComponent(jbRegistro))
@@ -194,8 +195,8 @@ public final class VCheckIngCheckOut extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jlNumRegistro)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jcReservas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jlCodChecking)))
+                        .addComponent(jlCodChecking)
+                        .addComponent(txtReserva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -223,12 +224,6 @@ public final class VCheckIngCheckOut extends javax.swing.JInternalFrame {
         );
 
         jTabbedPane1.addTab("Check - In", jPanel1);
-
-        jcRegistros.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jcRegistrosItemStateChanged(evt);
-            }
-        });
 
         jLabel10.setText("Numero de registro: ");
 
@@ -276,6 +271,13 @@ public final class VCheckIngCheckOut extends javax.swing.JInternalFrame {
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel16.setText("$");
 
+        txtRegistro.setText(" ");
+        txtRegistro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtRegistroKeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -314,8 +316,8 @@ public final class VCheckIngCheckOut extends javax.swing.JInternalFrame {
                     .addComponent(jlDias, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
                     .addComponent(jlValorServicios, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
                     .addComponent(jdFechaPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jcRegistros, 0, 107, Short.MAX_VALUE)
-                    .addComponent(jlNumeroPago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jlNumeroPago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtRegistro))
                 .addGap(68, 68, 68))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(165, 165, 165)
@@ -325,11 +327,11 @@ public final class VCheckIngCheckOut extends javax.swing.JInternalFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jcRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                    .addComponent(txtRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
                     .addComponent(jlNumeroPago))
@@ -383,17 +385,9 @@ public final class VCheckIngCheckOut extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jcReservasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcReservasItemStateChanged
-        if (jcReservas.getSelectedIndex() == -1) {
-        } else {
-            int numero = Integer.parseInt(jcReservas.getSelectedItem().toString());
-            llenarCheckingReserva(numero);
-        }
-    }//GEN-LAST:event_jcReservasItemStateChanged
-
     private void jbReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbReservaActionPerformed
-        jlCodChecking.setText("Seleccione la Reserva: ");
-        jcReservas.setVisible(true);
+        jlCodChecking.setText("Digite Numero De Reserva: ");
+        txtReserva.setVisible(true);
         jlNumRegistro.setVisible(false);
         jbRegistro.setEnabled(true);
         jbReserva.setEnabled(false);
@@ -402,7 +396,7 @@ public final class VCheckIngCheckOut extends javax.swing.JInternalFrame {
 
     private void jbRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRegistroActionPerformed
         jlCodChecking.setText("Numero Registro: ");
-        jcReservas.setVisible(false);
+        txtReserva.setVisible(false);
         jlNumRegistro.setVisible(true);
         generarNumRegistro();
         jbReserva.setEnabled(true);
@@ -412,19 +406,11 @@ public final class VCheckIngCheckOut extends javax.swing.JInternalFrame {
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         crearRegistro();
-        jcReservas.removeAllItems();
-        numReservas(jcReservas);
+        //jcReservas.removeAllItems();
+        //numReservas(jcReservas);
         limpiarCampos();
-        dispose();
+        
     }//GEN-LAST:event_jbGuardarActionPerformed
-
-    private void jcRegistrosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcRegistrosItemStateChanged
-       if (jcReservas.getSelectedIndex() == -1) {
-        } else {
-            int numero = Integer.parseInt(jcRegistros.getSelectedItem().toString());
-            llenarCheckOutgRegistros(numero);
-        }
-    }//GEN-LAST:event_jcRegistrosItemStateChanged
 
     private void jbPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPagarActionPerformed
         // TODO add your handling code here:
@@ -457,7 +443,8 @@ public final class VCheckIngCheckOut extends javax.swing.JInternalFrame {
                         JOptionPane.showMessageDialog(this,"Error al grabar Pago",
                                 "Confirmación",JOptionPane.ERROR_MESSAGE);
                     }
-            eliminarRegistro(Integer.parseInt(jlNumeroPago.getText()));            
+            //eliminarRegistro(Integer.parseInt(jlNumeroPago.getText())); 
+            txtReserva.setText("");
             jlNumeroPago.setText("...");
             jlIDCliente.setText("...");
             jlValorHospedaje.setText("...");            
@@ -469,13 +456,53 @@ public final class VCheckIngCheckOut extends javax.swing.JInternalFrame {
             
             modificarEstadoHabPagada(nHabitacion);
             
-            dispose();
+           
                         
         
         }
         
         }
     }//GEN-LAST:event_jbPagarActionPerformed
+
+    private void txtReservaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtReservaKeyReleased
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+           try{ 
+            if(buscarRegistro(Integer.parseInt(txtReserva.getText()))){
+                JOptionPane.showMessageDialog(this,"Error La Reserva No Esta Vigente",
+                                "Error",JOptionPane.ERROR_MESSAGE);
+            }else{                          
+            llenarCheckingReserva(Integer.parseInt(txtReserva.getText()));
+            }
+            }catch(Exception e){
+            JOptionPane.showMessageDialog(this,"Error Dato DE Reserva Erroneo",
+                                "Error",JOptionPane.ERROR_MESSAGE);
+            txtReserva.setText("");
+                    
+            
+        }
+        }
+    
+    }//GEN-LAST:event_txtReservaKeyReleased
+
+    private void txtRegistroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRegistroKeyReleased
+       if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+           try{
+           if( buscarPago(Integer.parseInt(txtRegistro.getText().trim()))){
+               JOptionPane.showMessageDialog(this,"Error El Registro No Esta Vigente",
+                                "Error",JOptionPane.ERROR_MESSAGE);
+           }else{   
+                                     
+            llenarCheckOutgRegistros(Integer.parseInt(txtRegistro.getText().trim()));
+           }
+                   
+            }catch(Exception e){
+            JOptionPane.showMessageDialog(this,"Error Dato DE Registro Erroneo",
+                                "Error",JOptionPane.ERROR_MESSAGE);
+            txtReserva.setText("");
+              
+        }
+        }
+    }//GEN-LAST:event_txtRegistroKeyReleased
 
     public void llenarCheckOutgRegistros(int n){
         ArrayList<Registro> listadoRegistro = new ArrayList();
@@ -488,17 +515,27 @@ public final class VCheckIngCheckOut extends javax.swing.JInternalFrame {
                 int numeroDias =(int)(( listadoRegistro.get(i).getFechaSalida().getTime() - listadoRegistro.get(i).getFechaEntrada().getTime())/86400000);
                 jlDias.setText(""+numeroDias);
                 valorServicios(listadoRegistro.get(i).getCodCliente(),listadoRegistro.get(i).getFechaEntrada(),listadoRegistro.get(i).getFechaSalida());
-                
                 double valorHospedaje= Double.parseDouble(jlValorHospedaje.getText());
                 double valorServicios = Double.parseDouble(jlValorServicios.getText());
                 double valorTotal= (numeroDias * valorHospedaje )+ valorServicios;
-                jlNumeroPago.setText(jcRegistros.getSelectedItem().toString());
-                                
+                
+                jlNumeroPago.setText(txtRegistro.getText().trim());                                
                 jlValorTotal.setText(""+valorTotal);
                 
             }
         }   
                 
+        
+    }
+    
+    public boolean buscarPago(int numeroPago){
+        boolean encontrado =false;
+        ArrayList<Pago> pagos;
+        pagos=ControladorPago.listadoPago(numeroPago+"");
+        if(pagos.size()==1){
+            encontrado=true;
+        }
+        return encontrado;
         
     }
       
@@ -736,7 +773,7 @@ public final class VCheckIngCheckOut extends javax.swing.JInternalFrame {
             if (!jbRegistro.isEnabled()) {
                 unRegistro.setCodigoRegistro(parseInt(jlNumRegistro.getText()));
             } else {
-                unRegistro.setCodigoRegistro(Integer.parseInt(jcReservas.getSelectedItem().toString()));
+                unRegistro.setCodigoRegistro(Integer.parseInt(txtReserva.getText()));
             }
             unRegistro.setNumeroHabitacion(Integer.parseInt(jcNumHabitacion.getSelectedItem().toString()));
             unRegistro.setCodCliente(parseInt(jtxtId.getText()));
@@ -747,7 +784,7 @@ public final class VCheckIngCheckOut extends javax.swing.JInternalFrame {
             int resultado = 0;
             resultado = ControladorRegistro.crearRegistro(unRegistro);
             if (resultado == 1) {
-                eliminarReserva(unRegistro.getCodigoRegistro());
+                //eliminarReserva(unRegistro.getCodigoRegistro());
                 modificarEstadoHab(unRegistro.getNumeroHabitacion());
                 JOptionPane.showMessageDialog(this,
                         "Registro Reaizado Con éxito",
@@ -776,7 +813,7 @@ public final class VCheckIngCheckOut extends javax.swing.JInternalFrame {
         jDSalida.setDate(null);
         jtxtNumPersonas.setText("");
         jcNumHabitacion.setSelectedIndex(-1);
-        jcReservas.setSelectedIndex(-1);
+        txtReserva.setText("");
         generarNumRegistro();
     }
 
@@ -850,8 +887,6 @@ public final class VCheckIngCheckOut extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbRegistro;
     private javax.swing.JButton jbReserva;
     private javax.swing.JComboBox<String> jcNumHabitacion;
-    private javax.swing.JComboBox<String> jcRegistros;
-    private javax.swing.JComboBox<String> jcReservas;
     private com.toedter.calendar.JDateChooser jdFechaPago;
     private javax.swing.JLabel jlCodChecking;
     private javax.swing.JLabel jlDias;
@@ -863,5 +898,7 @@ public final class VCheckIngCheckOut extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlValorTotal;
     private javax.swing.JTextField jtxtId;
     private javax.swing.JTextField jtxtNumPersonas;
+    private javax.swing.JTextField txtRegistro;
+    private javax.swing.JTextField txtReserva;
     // End of variables declaration//GEN-END:variables
 }
