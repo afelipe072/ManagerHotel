@@ -185,6 +185,7 @@ public class GestionarUsuarios extends javax.swing.JInternalFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Controles:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
+        jbNuevo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jbNuevo.setText("Nuevo");
         jbNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,6 +194,7 @@ public class GestionarUsuarios extends javax.swing.JInternalFrame {
         });
 
         jbRegistrar.setEnabled(false);
+        jbRegistrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jbRegistrar.setText("Registrar");
         jbRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -200,6 +202,7 @@ public class GestionarUsuarios extends javax.swing.JInternalFrame {
             }
         });
 
+        jbBorrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jbBorrar.setText("Borrar");
         jbBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -207,6 +210,7 @@ public class GestionarUsuarios extends javax.swing.JInternalFrame {
             }
         });
 
+        jbModificar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jbModificar.setText("Modificar");
         jbModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -214,6 +218,7 @@ public class GestionarUsuarios extends javax.swing.JInternalFrame {
             }
         });
 
+        jbCancelar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jbCancelar.setText("Cancelar");
         jbCancelar.setEnabled(false);
         jbCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -289,7 +294,7 @@ public class GestionarUsuarios extends javax.swing.JInternalFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

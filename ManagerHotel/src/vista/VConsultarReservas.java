@@ -61,6 +61,7 @@ public class VConsultarReservas extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "Menu"));
 
+        jbBuscar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jbBuscar.setText("Buscar Reserva");
         jbBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,6 +69,7 @@ public class VConsultarReservas extends javax.swing.JInternalFrame {
             }
         });
 
+        jbEliminar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jbEliminar.setText("Eliminar Reserva");
         jbEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,6 +77,7 @@ public class VConsultarReservas extends javax.swing.JInternalFrame {
             }
         });
 
+        jbCancelar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jbCancelar.setText("Cancelar");
         jbCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

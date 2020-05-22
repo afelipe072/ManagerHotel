@@ -166,6 +166,7 @@ public class VCambiarContraseña extends javax.swing.JInternalFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        jbAceptar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jbAceptar.setText("Aceptar");
         jbAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,6 +174,7 @@ public class VCambiarContraseña extends javax.swing.JInternalFrame {
             }
         });
 
+        jbCerrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jbCerrar.setText("Cerrar");
         jbCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,7 +191,7 @@ public class VCambiarContraseña extends javax.swing.JInternalFrame {
                 .addComponent(jbAceptar)
                 .addGap(86, 86, 86)
                 .addComponent(jbCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

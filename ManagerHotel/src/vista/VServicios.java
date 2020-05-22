@@ -215,6 +215,7 @@ public class VServicios extends javax.swing.JInternalFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Opciones"));
 
+        jb_eliminar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jb_eliminar.setText("Eliminar");
         jb_eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -222,6 +223,7 @@ public class VServicios extends javax.swing.JInternalFrame {
             }
         });
 
+        jb_agregar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jb_agregar.setText("Agregar");
         jb_agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -229,6 +231,7 @@ public class VServicios extends javax.swing.JInternalFrame {
             }
         });
 
+        jb_buscar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jb_buscar.setText("Buscar");
         jb_buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -236,6 +239,7 @@ public class VServicios extends javax.swing.JInternalFrame {
             }
         });
 
+        jb_actualizar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jb_actualizar.setText("Actualizar");
         jb_actualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

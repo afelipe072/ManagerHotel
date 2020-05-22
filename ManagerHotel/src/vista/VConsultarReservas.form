@@ -87,6 +87,9 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="jbBuscar">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="11" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Buscar Reserva"/>
           </Properties>
           <Events>
@@ -95,6 +98,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="jbEliminar">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="11" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Eliminar Reserva"/>
           </Properties>
           <Events>
@@ -103,6 +109,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="jbCancelar">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="11" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
           </Properties>
           <Events>
